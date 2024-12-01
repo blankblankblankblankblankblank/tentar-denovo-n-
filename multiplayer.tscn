@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://08hye2rrx7gn"]
+
+[ext_resource type="Script" path="res://Multiplayer.gd" id="1_tn1j5"]
+[ext_resource type="Script" path="res://buttontipomerda.gd" id="2_72g6s"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tn1j5")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="UI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -40.0
+offset_right = 117.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(117, 40)
+text = "Host Game"
+script = ExtResource("2_72g6s")
+
+[node name="Join" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = 40.0
+offset_right = 117.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(117, 40)
+text = "Join Game"
+script = ExtResource("2_72g6s")
+
+[node name="LineEdit" type="LineEdit" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -125.0
+offset_right = 117.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Ip addres"
+alignment = 1
+
+[connection signal="pressed" from="UI/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Join" to="." method="_on_connect_pressed"]
