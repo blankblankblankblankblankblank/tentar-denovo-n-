@@ -2,7 +2,6 @@ extends Button
 class_name Buttontipomerda
 var resetScale = Vector2.ONE
 var shake = self.create_tween()
-var blow = self.create_tween()
 
 func _ready():
 	randomize()

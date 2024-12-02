@@ -14,6 +14,10 @@ script = ExtResource("1_tn1j5")
 
 [node name="Level" type="Node" parent="."]
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://level1.tscn")
+spawn_path = NodePath("../Level")
+
 [node name="UI" type="Control" parent="."]
 process_mode = 3
 layout_mode = 1
