@@ -29,7 +29,7 @@ func _on_connect_pressed():
 	# Start as client.
 	var txt : String = $UI/LineEdit.text
 	if txt == "":
-		OS.alert("No remote listed, connecting to localhost")
+		#OS.alert("No remote listed, connecting to localhost")
 		txt = '127.0.0.1'
 	peer.create_client(txt, PORT)
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
