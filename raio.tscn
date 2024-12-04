@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpvlugbypvlko"]
+
+[ext_resource type="Script" path="res://raio.gd" id="1_5wj17"]
+[ext_resource type="Material" uid="uid://b83336ql3pu4v" path="res://materials/raio_mat.tres" id="2_urfs1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5tvby"]
+material = ExtResource("2_urfs1")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uyrgw"]
+material = ExtResource("2_urfs1")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 350.0
+radial_segments = 8
+rings = 2
+
+[node name="raio" type="RayCast3D"]
+target_position = Vector3(0, 0, -325)
+script = ExtResource("1_5wj17")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("SphereMesh_5tvby")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, -175)
+mesh = SubResource("CylinderMesh_uyrgw")

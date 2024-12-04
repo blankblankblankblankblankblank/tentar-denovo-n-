@@ -3,7 +3,8 @@ extends Node3D
 const SPAWN_RANDOM := 5.0
 
 # raio = 0
-#const shots = [preload('res://scenes/raio.tscn'),preload('res://scenes/fireball.tscn'),preload('res://scenes/ice_knife.tscn')]
+const shots = [preload('res://raio.tscn')]
+
 #const explo = preload('res://scenes/explosion.tscn')
 @export var spawn_positions := []
 @onready var worldsync = get_node('WorldSync')
@@ -49,18 +50,16 @@ func del_player(id: int):
 	if player != null:
 		get_node(str(id)).queue_free()
 
-#@rpc('call_local')
-#func add_shot(id:int,parent_way:NodePath,shot:int):
-	#match shot:
-		#0:
-			#var r = shots[shot].instantiate()
-			#r.name = str(randi_range(0, 1024))
-			#r.father = id
-			#r.fpath = parent_way
-			##r.get_node('modelo').position = get_parent().get_node('Marker3D').position - get_parent().get_node('Camera3D').position + Vector3(0,0,-250)
-			#r.position = get_node(parent_way).get_node('Camera3D/Marker3D').global_position
-			#r.rotation = get_node(parent_way).get_node('Camera3D').global_rotation
-			#add_child(r,true)
+@rpc('call_local')
+func add_shot(parent_way:NodePath,shot:int):
+	match shot:
+		0:
+			var r = shots[shot].instantiate()
+			r.name = str(randi_range(0, 1024))
+			r.caster = parent_way
+			r.position = get_node(parent_way).get_node('Camera/Marker3D').global_position
+			r.rotation = get_node(parent_way).get_node('Camera').global_rotation
+			add_child(r,true)
 		#1:
 			#var r = shots[shot].instantiate()
 			#r.name = str(randi_range(0, 1024))

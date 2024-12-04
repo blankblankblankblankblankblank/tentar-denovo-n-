@@ -24,33 +24,32 @@ func _enter_tree() -> void:
 	#set_process(get_multiplayer_authority() == get_parent().player)
 	#set_process_input(get_multiplayer_authority() == get_parent().player)
 
+func _config_altered():
+	sense = Config.get_config('InputSettings','MouseSensitivity')
+	print('skibidi rizz gyatt')
+
 @rpc("call_local")
 func jump():
 	jumping = true
 	$JumpTimer.start()
 
 func _process(_delta):
-	if is_multiplayer_authority():
-		direction = Input.get_vector("a", "d", "w", "s")
-		if Input.is_action_just_pressed("ui_accept"):
-			jump.rpc()
-		#if Input.is_action_just_pressed('MouseOne'):
-			#shoot()
-	#else:
-		#direction = Input.get_vector("a", "d", "w", "s")
-		#if Input.is_action_just_pressed("jump"):
-			#jump.rpc()
-		#if Input.is_action_just_pressed('MouseOne'):
-			#shoot.rpc()
+	if !Options.visible:
+		if is_multiplayer_authority():
+			direction = Input.get_vector("a", "d", "w", "s")
+			if Input.is_action_just_pressed("jump"):
+				jump.rpc()
+			if Input.is_action_just_pressed('MouseOne'):
+				shoot.rpc()
 #
-#@rpc('call_remote')
-#func shoot():
-	#if timers[arma].is_stopped():
-		#get_parent().get_parent().add_shot(get_parent().player,get_parent().get_path(),arma)
-		#timers[arma].start()
+@rpc('call_local')
+func shoot():
+	if timers[arma].is_stopped():
+		get_parent().get_parent().add_shot(get_parent().get_path(),arma)
+		timers[arma].start()
 
 func _input(event):
-	#if is_multiplayer_authority():
+	if !Options.visible:
 		if event is InputEventMouseMotion:
 			get_parent().rotate_y(deg_to_rad(-event.relative.x * sense))
 			%Camera.rotate_x(deg_to_rad(-event.relative.y * sense))
@@ -61,6 +60,8 @@ func _input(event):
 			if int(OS.get_keycode_string(event.key_label)) != 0:
 				print(OS.get_keycode_string(event.key_label))
 				arma = int(OS.get_keycode_string(event.key_label))-1
+	if event.is_action_pressed('ui_text_clear_carets_and_selection'):
+		%Camera.get_node('Control').visible = !%Camera.get_node('Control').visible
 
 func _on_jump_timer_timeout() -> void:
 	jumping = false

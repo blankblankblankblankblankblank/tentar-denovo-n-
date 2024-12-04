@@ -41,7 +41,6 @@ func rotate_rpc(camr:Vector3,rot:Vector3,path:NodePath):
 		get_node(path).cam.rotation.x = lerp_angle(get_node(path).cam.rotation.x,camr.x,0.7)
 		get_node(path).rotation.y = lerp_angle(get_node(path).rotation.y,rot.y,0.7)
 
-
 func _process(delta):
 	rotate_rpc.rpc(cam.rotation,rotation,get_path())
 	var direction = transform.basis * (Vector3(input.direction.x, 0, input.direction.y)).normalized()
@@ -73,3 +72,8 @@ func _friction(delta: float) -> Vector3:
 	else:
 		return Velocity * 0.1
 	return scaled_velocity
+
+@rpc ("call_local")
+func _on_hit(dmg:int):
+	hp -= dmg
+	print(str(player)+': HP '+str(hp))
