@@ -50,7 +50,6 @@ func shoot():
 
 func _input(event):
 	if event.is_action_pressed('ui_text_clear_carets_and_selection'):
-		%Camera.get_node('Control').visible = !%Camera.get_node('Control').visible
 		_config_altered()
 	if !Options.visible:
 		if event is InputEventMouseMotion:

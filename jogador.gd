@@ -33,6 +33,7 @@ var gravity = 56
 func _ready() -> void:
 	hpbar.value = 200
 	get_node('PlayerSync').set_visibility_for(player,false)
+	%Control.visible = false
 	if multiplayer.get_unique_id() == player:
 		%Control.visible = true
 
@@ -91,10 +92,9 @@ func _on_hit(dmg:int):
 		get_parent().die.rpc(get_path())
 	hpbar.value = hp
 
-@rpc("call_local",'any_peer')
 func hit_mark():
+	$Camera/Control/TextureRect2.modulate.a = 1
 	var tween = create_tween()
 	$Camera/Control/TextureRect2.visible = true
-	tween.tween_property($Camera/Control/TextureRect2,'modulate',Color(1,0,0,0),0.15)
-	$Camera/Control/TextureRect2.visible = false
-	$Camera/Control/TextureRect2.modulate.a = 1
+	tween.tween_property($Camera/Control/TextureRect2,'modulate',Color(1,0,0,0),0.32)
+	tween.tween_property($Camera/Control/TextureRect2,'visible',false,0)

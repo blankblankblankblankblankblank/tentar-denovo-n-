@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bofh0ihp45jwb" path="res://pastateste/scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="4_0xmj8"]
 
 [node name="MasterOptionsMenu" instance=ExtResource("1_1c612")]
+top_level = true
 z_index = 2
 mouse_default_cursor_shape = 1
 

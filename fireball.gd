@@ -18,5 +18,5 @@ func _on_body_entered(hit):
 	if hit.is_in_group('jogador'):
 		if hit != get_node(caster):
 			hit._on_hit(dmg)
-			hit.hit_mark.rpc_id(get_node(caster).player)
+			get_node(caster).hit_mark()
 			_explosion()

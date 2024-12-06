@@ -12,11 +12,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if is_colliding():
-		if is_multiplayer_authority():
-			var hit = get_collider()
-			if hit.is_in_group('jogador') and !hit == get_node(caster):
-				hit._on_hit(dmg)
-				hit.hit_mark.rpc_id(get_node(caster).player)
+		var hit = get_collider()
+		if hit.is_in_group('jogador') and hit != get_node(caster):
+			hit._on_hit(dmg)
+			get_node(caster).hit_mark()
 		enabled = false
 		var colpoint = to_local(get_collision_point())
 		mesh2.position.z = colpoint.z/2
