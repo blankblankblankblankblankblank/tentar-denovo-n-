@@ -1,4 +1,4 @@
-[gd_scene load_steps=606 format=4 uid="uid://wyvvsaqn2jkf"]
+[gd_scene load_steps=595 format=4 uid="uid://wyvvsaqn2jkf"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_18jih"]
 [ext_resource type="Sky" uid="uid://dcs5d8xaspr0o" path="res://rainysky.tres" id="3_em48y"]
@@ -22,7 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://crvcv80yausvi" path="res://Textures/bluewindow.jpg" id="22_jvnit"]
 [ext_resource type="Texture2D" uid="uid://cr2irv8v3sc1a" path="res://Textures/rb6464ssr.jpg" id="23_4thls"]
 [ext_resource type="Texture2D" uid="uid://w0my77ctp5l0" path="res://Textures/wdcors.jpg" id="24_37apk"]
+[ext_resource type="Material" uid="uid://b23782c0cj1th" path="res://materials/firemove.tres" id="24_imf3b"]
+[ext_resource type="Material" uid="uid://csgm08whhlfvv" path="res://materials/firepart.tres" id="25_f384e"]
 [ext_resource type="Texture2D" uid="uid://cw42mi41rtspa" path="res://Textures/shelf_2.jpg" id="25_hiapk"]
+[ext_resource type="Material" uid="uid://bdorqcwr128kc" path="res://materials/fireparticles.tres" id="26_jq4ix"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ay61t"]
 properties/0/path = NodePath(".:spawn_positions")
@@ -2073,181 +2076,14 @@ points = PackedVector3Array(-17.2308, -6.30985, -101.51, -17.2308, -7.30986, -10
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mhyrk"]
 points = PackedVector3Array(-17.2308, -6.30986, 86.4904, -17.2308, -7.30986, 85.4904, -9.23077, -7.30986, 85.4904, -9.23077, -6.30986, 86.4904, -17.2308, -7.30986, 86.4904, -9.23077, -7.30986, 86.4904)
 
-[sub_resource type="Shader" id="Shader_y12m8"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx, unshaded, shadows_disabled, depth_prepass_alpha;
-
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color, filter_nearest, repeat_enable;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
-
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_nearest, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest, repeat_enable;
-
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
-varying vec3 uv1_triplanar_pos;
-
-uniform float uv1_blend_sharpness : hint_range(0.0, 150.0, 0.001);
-varying vec3 uv1_power_normal;
-
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-void vertex() {
-	vec3 normal = NORMAL;
-
-	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
-	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
-	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
-	TANGENT = normalize(TANGENT);
-
-	BINORMAL = vec3(0.0, 1.0, 0.0) * abs(normal.x);
-	BINORMAL += vec3(0.0, 0.0, -1.0) * abs(normal.y);
-	BINORMAL += vec3(0.0, 1.0, 0.0) * abs(normal.z);
-	BINORMAL = normalize(BINORMAL);
-
-	// UV1 Triplanar: Enabled
-	uv1_power_normal = pow(abs(NORMAL), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = VERTEX * uv1_scale + uv1_offset;
-	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
-	uv1_triplanar_pos.xzy += vec3(TIME);
-	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
-}
-
-vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
-	vec4 samp = vec4(0.0);
-	samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
-	samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
-	samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
-	return samp;
-}
-
-void fragment() {
-	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-
-	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
-
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	ALPHA *= albedo.a * albedo_tex.a;
-}
-"
-
-[sub_resource type="Gradient" id="Gradient_cc8mq"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.368421, 0.673684, 0.736842, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1, 1.06458, 0.478453, 0, 1.06458, 1, 1, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bpeqt"]
-noise_type = 3
-fractal_octaves = 10
-fractal_lacunarity = 3.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lqgqe"]
-generate_mipmaps = false
-seamless = true
-bump_strength = 32.0
-color_ramp = SubResource("Gradient_cc8mq")
-noise = SubResource("FastNoiseLite_bpeqt")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nk8x8"]
-render_priority = 0
-shader = SubResource("Shader_y12m8")
-shader_parameter/albedo = Color(3, 3, 3, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_blend_sharpness = 21.1121
-shader_parameter/uv1_scale = Vector3(0.17, 0.17, 0.17)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = SubResource("NoiseTexture2D_lqgqe")
-
 [sub_resource type="SphereMesh" id="SphereMesh_k8bl2"]
-material = SubResource("ShaderMaterial_nk8x8")
+material = ExtResource("24_imf3b")
 radius = 10.0
 height = 20.0
 
-[sub_resource type="Gradient" id="Gradient_jn35t"]
-offsets = PackedFloat32Array(0, 0.171206, 0.77821, 0.902174)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ncruf"]
-gradient = SubResource("Gradient_jn35t")
-
-[sub_resource type="Curve" id="Curve_v7c64"]
-_data = [Vector2(0, 0.35943), 0.0, 0.0, 0, 0, Vector2(0.171053, 1), 0.0, 0.0, 0, 0, Vector2(0.583333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.30249, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_0vbhw"]
-curve = SubResource("Curve_v7c64")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_72tco"]
-angle_max = 720.0
-direction = Vector3(0, 1, 0)
-initial_velocity_max = 2.0
-gravity = Vector3(0, 30, 0)
-tangential_accel_min = -3.0
-tangential_accel_max = 3.0
-scale_min = 0.0
-scale_curve = SubResource("CurveTexture_0vbhw")
-color_ramp = SubResource("GradientTexture1D_ncruf")
-anim_offset_min = 0.7879
-anim_offset_max = 1.0
-turbulence_noise_scale = 0.0
-
-[sub_resource type="Gradient" id="Gradient_xpx5k"]
-offsets = PackedFloat32Array(0.581395, 0.813953, 0.860465, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1, 1, 0.568627, 0, 1, 1, 1, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_iiu3x"]
-noise_type = 2
-frequency = 0.025
-fractal_type = 2
-fractal_octaves = 1
-cellular_distance_function = 1
-cellular_jitter = 0.065
-domain_warp_enabled = true
-domain_warp_amplitude = 30.85
-domain_warp_frequency = 0.055
-domain_warp_fractal_octaves = 10
-domain_warp_fractal_lacunarity = 6.235
-domain_warp_fractal_gain = 0.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_akjeo"]
-color_ramp = SubResource("Gradient_xpx5k")
-noise = SubResource("FastNoiseLite_iiu3x")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwkfr"]
-transparency = 4
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("NoiseTexture2D_akjeo")
-detail_blend_mode = 3
-texture_filter = 0
-disable_receive_shadows = true
-billboard_mode = 3
-particles_anim_h_frames = 8
-particles_anim_v_frames = 6
-particles_anim_loop = false
-
 [sub_resource type="QuadMesh" id="QuadMesh_50s0u"]
 lightmap_size_hint = Vector2i(7, 7)
-material = SubResource("StandardMaterial3D_mwkfr")
+material = ExtResource("26_jq4ix")
 size = Vector2(21, 21)
 
 [sub_resource type="Shader" id="Shader_xtnnu"]
@@ -2299,7 +2135,7 @@ script = ExtResource("1_18jih")
 spawn_positions = [NodePath("Elements/Spawnpoits/Marker3D1"), NodePath("Elements/Spawnpoits/Marker3D2"), NodePath("Elements/Spawnpoits/Marker3D3"), NodePath("Elements/Spawnpoits/Marker3D4"), NodePath("Elements/Spawnpoits/Marker3D5"), NodePath("Elements/Spawnpoits/Marker3D6"), NodePath("Elements/Spawnpoits/Marker3D7"), NodePath("Elements/Spawnpoits/Marker3D8"), NodePath("Elements/Spawnpoits/Marker3D9"), NodePath("Elements/Spawnpoits/Marker3D10"), NodePath("Elements/Spawnpoits/Marker3D11"), NodePath("Elements/Spawnpoits/Marker3D12")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://jogador.tscn", "res://raio.tscn")
+_spawnable_scenes = PackedStringArray("res://jogador.tscn")
 spawn_path = NodePath("..")
 
 [node name="WorldSync" type="MultiplayerSynchronizer" parent="."]
@@ -3991,7 +3827,7 @@ cast_shadow = 0
 amount = 24
 lifetime = 1.2
 fixed_fps = 45
-process_material = SubResource("ParticleProcessMaterial_72tco")
+process_material = ExtResource("25_f384e")
 draw_pass_1 = SubResource("QuadMesh_50s0u")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Elements/Models"]

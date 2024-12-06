@@ -3,9 +3,9 @@ extends Node3D
 const SPAWN_RANDOM := 5.0
 
 # raio = 0
-const shots = [preload('res://raio.tscn')]
+const shots = [preload('res://raio.tscn'),preload('res://fireball.tscn')]
 
-#const explo = preload('res://scenes/explosion.tscn')
+const explo = preload('res://explosion.tscn')
 @export var spawn_positions := []
 @onready var worldsync = get_node('WorldSync')
 
@@ -26,7 +26,11 @@ func _ready() -> void:
 	# Spawn the local player unless this is a dedicated server export.
 	if !DisplayServer.get_name() == "headless" and multiplayer.is_server():
 		add_player(1)
-	
+
+@rpc("call_local",'authority')
+func die(path):
+	get_node(path).hp = 200
+	get_node(path).position = get_node(spawn_positions.pick_random()).global_position
 
 func _exit_tree():
 	if not multiplayer.is_server(): 
@@ -60,16 +64,15 @@ func add_shot(parent_way:NodePath,shot:int):
 			r.position = get_node(parent_way).get_node('Camera/Marker3D').global_position
 			r.rotation = get_node(parent_way).get_node('Camera').global_rotation
 			add_child(r,true)
-		#1:
-			#var r = shots[shot].instantiate()
-			#r.name = str(randi_range(0, 1024))
-			#r.father = id
-			#r.fpath = parent_way
-			##r.get_node('modelo').position = get_parent().get_node('Marker3D').position - get_parent().get_node('Camera3D').position + Vector3(0,0,-250)
-			#r.position = get_node(parent_way).get_node('Camera3D/Marker3D2').global_position
-			#r.rotation = get_node(parent_way).get_node('Camera3D').global_rotation
-			#add_child(r,true)
-			#r.apply_central_impulse(-(get_node(parent_way).get_node('Camera3D').global_transform.basis.z) * 60)
+		1:
+			var r = shots[shot].instantiate()
+			r.name = str(randi_range(0, 1024))
+			r.caster = parent_way
+			#r.get_node('modelo').position = get_parent().get_node('Marker3D').position - get_parent().get_node('Camera3D').position + Vector3(0,0,-250)
+			r.position = get_node(parent_way).get_node('Camera/Marker3D').global_position
+			r.rotation = get_node(parent_way).get_node('Camera').global_rotation
+			add_child(r,true)
+			r.apply_central_impulse(-(get_node(parent_way).get_node('Camera').global_transform.basis.z) * 60)
 		#2:
 			#for i in 9:
 				#var r = shots[shot].instantiate()
@@ -81,8 +84,8 @@ func add_shot(parent_way:NodePath,shot:int):
 				#var cam = get_node(parent_way).get_node('Camera3D')
 				#r.rotation = cam.global_rotation + Vector3(rng.randf_range(-0.1,0.1),rng.randf_range(-0.09,0.11),rng.randf_range(-0.1,0.09))*0.2
 				#add_child(r,true)
-#
-#func _explode(pos:Vector3):
-	#var r = explo.instantiate()
-	#r.position = pos
-	#add_child(r,true)
+
+func _explode(pos:Vector3):
+	var r = explo.instantiate()
+	r.position = pos
+	add_child(r,true)

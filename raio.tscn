@@ -5,6 +5,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_5tvby"]
 material = ExtResource("2_urfs1")
+flip_faces = true
 radius = 0.1
 height = 0.2
 radial_segments = 8

@@ -25,8 +25,8 @@ func _enter_tree() -> void:
 	#set_process_input(get_multiplayer_authority() == get_parent().player)
 
 func _config_altered():
-	sense = Config.get_config('InputSettings','MouseSensitivity')
-	print('skibidi rizz gyatt')
+	sense = Config.get_config('InputSettings','MouseSensitivity',0.2)
+	%Camera.fov = Config.get_config('VideoSettings','FieldOfView',90)
 
 @rpc("call_local")
 func jump():
@@ -36,7 +36,7 @@ func jump():
 func _process(_delta):
 	if !Options.visible:
 		if is_multiplayer_authority():
-			direction = Input.get_vector("a", "d", "w", "s")
+			direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 			if Input.is_action_just_pressed("jump"):
 				jump.rpc()
 			if Input.is_action_just_pressed('MouseOne'):
@@ -49,6 +49,9 @@ func shoot():
 		timers[arma].start()
 
 func _input(event):
+	if event.is_action_pressed('ui_text_clear_carets_and_selection'):
+		%Camera.get_node('Control').visible = !%Camera.get_node('Control').visible
+		_config_altered()
 	if !Options.visible:
 		if event is InputEventMouseMotion:
 			get_parent().rotate_y(deg_to_rad(-event.relative.x * sense))
@@ -60,8 +63,6 @@ func _input(event):
 			if int(OS.get_keycode_string(event.key_label)) != 0:
 				print(OS.get_keycode_string(event.key_label))
 				arma = int(OS.get_keycode_string(event.key_label))-1
-	if event.is_action_pressed('ui_text_clear_carets_and_selection'):
-		%Camera.get_node('Control').visible = !%Camera.get_node('Control').visible
 
 func _on_jump_timer_timeout() -> void:
 	jumping = false

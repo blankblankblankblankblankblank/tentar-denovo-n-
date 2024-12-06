@@ -63,7 +63,8 @@ var default_value
 var _connected_nodes : Array
 
 func _on_setting_changed(value):
-	$Label.text = str("%.2f" % value)
+	if type_string(typeof(value)) == 'float':
+		$Label.text = str("%.2f" % value)
 	Config.set_config(section, key, value)
 	setting_changed.emit(value)
 
@@ -100,7 +101,7 @@ func set_value(value : Variant):
 				node.button_pressed = value as bool
 		if node is Range:
 			node.value = value as float
-		if node is LineEdit or node is TextEdit:
+		if node is LineEdit or node is TextEdit or node is Label:
 			node.text = "%s" % value
 
 func set_editable(value : bool = true):

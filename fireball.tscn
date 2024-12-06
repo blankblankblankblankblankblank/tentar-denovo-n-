@@ -1,0 +1,187 @@
+[gd_scene load_steps=17 format=3 uid="uid://pfj2x764j700"]
+
+[ext_resource type="Script" path="res://fireball.gd" id="1_osy0k"]
+[ext_resource type="Material" uid="uid://bdorqcwr128kc" path="res://materials/fireparticles.tres" id="1_xkcdu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8xqfh"]
+radius = 0.3
+
+[sub_resource type="Shader" id="Shader_shtu8"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded, shadows_disabled;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_nearest, repeat_enable;
+uniform float alpha_scissor_threshold : hint_range(0.0, 1.0, 0.001);
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_nearest, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+varying vec3 uv1_triplanar_pos;
+
+uniform float uv1_blend_sharpness : hint_range(0.0, 150.0, 0.001);
+varying vec3 uv1_power_normal;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
+
+	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
+	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
+	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
+	TANGENT = inverse(MODEL_NORMAL_MATRIX) * normalize(TANGENT);
+
+	BINORMAL = vec3(0.0, 1.0, 0.0) * abs(normal.x);
+	BINORMAL += vec3(0.0, 0.0, -1.0) * abs(normal.y);
+	BINORMAL += vec3(0.0, 1.0, 0.0) * abs(normal.z);
+	BINORMAL = inverse(MODEL_NORMAL_MATRIX) * normalize(BINORMAL);
+
+	// UV1 Triplanar: Enabled (with World Triplanar)
+	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset;
+	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
+	uv1_triplanar_pos.zyx += vec3(TIME/2.0);
+	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
+}
+
+vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
+	vec4 samp = vec4(0.0);
+	samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
+	samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
+	samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
+	return samp;
+}
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * vec3(3.5) * albedo_tex.rgb;
+
+	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	ALPHA *= albedo.a * albedo_tex.a;
+	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_w554x"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.452632, 0.642105, 0.684211, 0.947368)
+colors = PackedColorArray(0, 0, 0, 0, 0.764706, 0, 0, 1, 0.713109, 0.330518, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_24t48"]
+seed = 1
+frequency = 0.005
+fractal_type = 2
+fractal_octaves = 4
+fractal_lacunarity = 1.935
+fractal_gain = 0.75
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 9.07
+domain_warp_fractal_type = 2
+domain_warp_fractal_gain = 0.67
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3v2e1"]
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_w554x")
+noise = SubResource("FastNoiseLite_24t48")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdo7i"]
+render_priority = 0
+shader = SubResource("Shader_shtu8")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/alpha_scissor_threshold = 0.345
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_blend_sharpness = 9.51365
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_3v2e1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ow78s"]
+material = SubResource("ShaderMaterial_hdo7i")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Gradient" id="Gradient_plfqr"]
+offsets = PackedFloat32Array(0, 0.171206, 0.77821, 0.902174)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gimvr"]
+gradient = SubResource("Gradient_plfqr")
+
+[sub_resource type="Curve" id="Curve_3if4r"]
+_data = [Vector2(0, 0.35943), 0.0, 0.0, 0, 0, Vector2(0.171053, 1), 0.0, 0.0, 0, 0, Vector2(0.583333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.30249, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ichop"]
+curve = SubResource("Curve_3if4r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4agh"]
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 2.0
+gravity = Vector3(0, 3, 0)
+tangential_accel_min = -3.0
+tangential_accel_max = 3.0
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_ichop")
+color_ramp = SubResource("GradientTexture1D_gimvr")
+anim_offset_min = 0.6563
+anim_offset_max = 1.0
+turbulence_noise_scale = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_x33ei"]
+material = ExtResource("1_xkcdu")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b3fk3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="fireball" type="RigidBody3D"]
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp_mode = 1
+angular_damp = 1.0
+script = ExtResource("1_osy0k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8xqfh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ow78s")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+fixed_fps = 120
+process_material = SubResource("ParticleProcessMaterial_w4agh")
+draw_pass_1 = SubResource("QuadMesh_x33ei")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_b3fk3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

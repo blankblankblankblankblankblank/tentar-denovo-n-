@@ -34,3 +34,18 @@ visible = false
 layout_mode = 2
 mouse_filter = 0
 metadata/_tab_index = 2
+
+[node name="Button" type="Button" parent="." index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.672
+offset_top = -48.2001
+offset_right = 76.672
+offset_bottom = -16.2001
+grow_vertical = 0
+pivot_offset = Vector2(-12, 48)
+text = "QUIT"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
