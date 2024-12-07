@@ -20,6 +20,7 @@ var gravity = 56
 @onready var cam = $Camera
 @onready var hpbar = get_node('Camera/Control/HpBar')
 @onready var nick:String
+@onready var sync := get_node('PlayerSync')
 
 # Set by the authority, synchronized on spawn.
 @export var player := 1:
@@ -49,11 +50,12 @@ func rotate_rpc(camr:Vector3,rot:Vector3,path:NodePath):
 @rpc ("call_remote","any_peer")
 func position_rpc(pos:Vector3,path:NodePath):
 	if player != multiplayer.get_unique_id():
-		get_node(path).position = lerp(get_node(path).position,pos,0.7)
+		#get_node(path).position = lerp(get_node(path).position,pos,0.7)
+#		talvez conserte o jitter talvez fds
+		get_node(path).position = pos
 
 func _physics_process(delta):
 	rotate_rpc.rpc(cam.rotation,rotation,get_path())
-	position_rpc.rpc(position,get_path())
 	var direction = transform.basis * (Vector3(input.direction.x, 0, input.direction.y)).normalized()
 	if direction:
 		Velocity = _accelerate(accel,direction,delta)
@@ -84,13 +86,15 @@ func _friction(delta: float) -> Vector3:
 		return Velocity
 	return scaled_velocity
 
-@rpc ("call_remote")
+#@rpc ("call_remote",'any_peer')
 func _on_hit(dmg:int):
-	hp -= dmg
-	print(str(player)+': HP '+str(hp))
-	if hp <= 0:
-		get_parent().die.rpc(get_path())
-	hpbar.value = hp
+	if multiplayer.get_unique_id() == 1:
+		hp -= dmg
+		print(str(player)+': HP '+str(hp))
+		if hp <= 0:
+			get_parent().die.rpc(get_path())
+		hpbar.value = hp
+		position_rpc(position,get_path())
 
 func hit_mark():
 	$Camera/Control/TextureRect2.modulate.a = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dyafi3js2p3rf"]
+[gd_scene load_steps=18 format=3 uid="uid://dyafi3js2p3rf"]
 
 [ext_resource type="Script" path="res://explosion.gd" id="1_0waa1"]
 [ext_resource type="Material" uid="uid://buejqettv4s01" path="res://materials/explosion_mat2.tres" id="2_37iqp"]
@@ -164,11 +164,6 @@ _data = {
 "explosion": SubResource("Animation_87ub5")
 }
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1qrq5"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 0
-
 [node name="Area3D" type="Area3D"]
 collision_mask = 3
 script = ExtResource("1_0waa1")
@@ -209,9 +204,6 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_csuno")
 }
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_1qrq5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
