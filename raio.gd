@@ -14,7 +14,7 @@ func _physics_process(_delta: float) -> void:
 	if is_colliding():
 		var hit = get_collider()
 		if hit.is_in_group('jogador') and hit != get_node(caster):
-			hit._on_hit(dmg)
+			hit._on_hit.rpc(dmg)
 			get_node(caster).hit_mark()
 		enabled = false
 		var colpoint = to_local(get_collision_point())

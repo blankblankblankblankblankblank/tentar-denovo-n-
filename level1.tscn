@@ -1,4 +1,4 @@
-[gd_scene load_steps=595 format=4 uid="uid://wyvvsaqn2jkf"]
+[gd_scene load_steps=598 format=4 uid="uid://wyvvsaqn2jkf"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_18jih"]
 [ext_resource type="Sky" uid="uid://dcs5d8xaspr0o" path="res://rainysky.tres" id="3_em48y"]
@@ -26,6 +26,9 @@
 [ext_resource type="Material" uid="uid://csgm08whhlfvv" path="res://materials/firepart.tres" id="25_f384e"]
 [ext_resource type="Texture2D" uid="uid://cw42mi41rtspa" path="res://Textures/shelf_2.jpg" id="25_hiapk"]
 [ext_resource type="Material" uid="uid://bdorqcwr128kc" path="res://materials/fireparticles.tres" id="26_jq4ix"]
+[ext_resource type="Material" uid="uid://cuj03d5hl5yev" path="res://warp_material_flicker.tres" id="28_6fvmw"]
+[ext_resource type="Script" path="res://spritetipomerda.gd" id="28_ksvyp"]
+[ext_resource type="Texture2D" uid="uid://cnitucxqan4s3" path="res://exports/textures/whole(2).png" id="29_txru0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ay61t"]
 properties/0/path = NodePath(".:spawn_positions")
@@ -3833,6 +3836,16 @@ draw_pass_1 = SubResource("QuadMesh_50s0u")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Elements/Models"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -36.3347, 0)
 mesh = SubResource("BoxMesh_qc3v0")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Elements/Models"]
+transform = Transform3D(0.0902542, 0.995919, -4.3533e-08, 0, -4.37114e-08, -1, -0.995919, 0.0902542, -3.94514e-09, 0, 2000, 0)
+material_override = ExtResource("28_6fvmw")
+pixel_size = 9.0
+double_sided = false
+fixed_size = true
+texture_filter = 1
+texture = ExtResource("29_txru0")
+script = ExtResource("28_ksvyp")
 
 [node name="Interative" type="Node3D" parent="Elements"]
 

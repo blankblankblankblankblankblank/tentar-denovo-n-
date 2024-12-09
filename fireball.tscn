@@ -4,7 +4,8 @@
 [ext_resource type="Material" uid="uid://bdorqcwr128kc" path="res://materials/fireparticles.tres" id="1_xkcdu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8xqfh"]
-radius = 0.3
+margin = 0.1
+radius = 0.33
 
 [sub_resource type="Shader" id="Shader_shtu8"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable.mono's StandardMaterial3D.

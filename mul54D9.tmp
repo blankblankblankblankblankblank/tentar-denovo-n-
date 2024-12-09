@@ -86,7 +86,6 @@ grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "nickname"
 alignment = 1
-max_length = 22
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="UI"]
 layout_mode = 0

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://jogador.gd" id="1_a85vn"]
 [ext_resource type="Texture2D" uid="uid://bsta733gke64t" path="res://Textures/hitmarker.png" id="2_junby"]
 [ext_resource type="Script" path="res://input.gd" id="2_qefow"]
+[ext_resource type="ArrayMesh" uid="uid://d28btoilxsq4m" path="res://mage1.tres" id="3_k5vwb"]
 [ext_resource type="Texture2D" uid="uid://45d6v7lp02e5" path="res://backgroud.png" id="3_rl8mj"]
 [ext_resource type="Texture2D" uid="uid://duvp04inuj0sp" path="res://overlay.png" id="4_0y44m"]
 [ext_resource type="Texture2D" uid="uid://bnv0xyncv2mvh" path="res://hp_trovão.png" id="5_y18oi"]
@@ -10,8 +11,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eq8i0"]
 radius = 0.6
 height = 2.2
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_pt2i0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qce3e"]
 properties/0/path = NodePath(".:hp")
@@ -40,6 +39,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("Input:arma")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath("MeshInstance3D/Label3D:text")
+properties/4/spawn = true
+properties/4/replication_mode = 2
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["jogador"]]
 script = ExtResource("1_a85vn")
@@ -48,12 +50,21 @@ script = ExtResource("1_a85vn")
 shape = SubResource("CapsuleShape3D_eq8i0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_pt2i0")
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0, -0.4, 0)
+mesh = ExtResource("3_k5vwb")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9, 0)
+pixel_size = 0.0065
+billboard = 1
+text = "Bobão
+"
 
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 fov = 105.0
+near = 0.2
 
 [node name="Marker3D" type="Marker3D" parent="Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -147,7 +158,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="2" type="Timer" parent="armas"]
-wait_time = 0.45
+wait_time = 0.5
 one_shot = true
 
 [node name="3" type="Timer" parent="armas"]

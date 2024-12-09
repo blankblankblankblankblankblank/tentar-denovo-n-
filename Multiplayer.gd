@@ -2,6 +2,8 @@ extends Node
 
 const PORT = 4433
 var peer = ENetMultiplayerPeer.new()
+var cor := Color(1,1,1)
+var nickname := 'Guest'
 
 func _ready():
 	# Start paused.
@@ -40,6 +42,8 @@ func _on_connect_pressed():
 
 
 func start_game():
+	Options.cor = $UI/ColorPickerButton.color.clamp(Color(0.1,0.1,0.1,1),Color.WHITE)
+	Options.nick = $UI/nome.text
 	# Hide the UI and unpause to start the game.
 	$UI.hide()
 	get_tree().paused = false

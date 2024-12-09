@@ -1,5 +1,6 @@
 extends MultiplayerSynchronizer
 
+@export_category('mp')
 @export var jumping := false;
 @export var direction := Vector2();
 @export var cam_rot := Vector3();
@@ -23,6 +24,10 @@ func _enter_tree() -> void:
 	set_process_input(is_multiplayer_authority())
 	#set_process(get_multiplayer_authority() == get_parent().player)
 	#set_process_input(get_multiplayer_authority() == get_parent().player)
+
+func _ready():
+	get_parent().nick = Options.nick
+	get_parent().cor = Options.cor
 
 func _config_altered():
 	sense = Config.get_config('InputSettings','MouseSensitivity',0.2)

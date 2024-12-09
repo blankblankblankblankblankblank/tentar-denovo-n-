@@ -3,13 +3,15 @@ extends Node3D
 const SPAWN_RANDOM := 5.0
 
 # raio = 0
-const shots = [preload('res://raio.tscn'),preload('res://fireball.tscn')]
+const shots = [preload('res://raio.tscn'),preload('res://fireball.tscn'),preload('res://ice_pellet.tscn')]
 
 const explo = preload('res://explosion.tscn')
 @export var spawn_positions := []
 @onready var worldsync = get_node('WorldSync')
 
 var rng = RandomNumberGenerator.new()
+
+var spread = [Vector3(1,-1,1),Vector3(0,0,0),Vector3(-1,-1,1),Vector3(1,1,-1),Vector3(-1,1,-1)]
 
 func _ready() -> void:
 	# We only need to spawn players on the server.
@@ -72,18 +74,17 @@ func add_shot(parent_way:NodePath,shot:int):
 			r.position = get_node(parent_way).get_node('Camera/Marker3D').global_position
 			r.rotation = get_node(parent_way).get_node('Camera').global_rotation
 			add_child(r,true)
-			r.apply_central_impulse(-(get_node(parent_way).get_node('Camera').global_transform.basis.z) * 60)
-		#2:
-			#for i in 9:
-				#var r = shots[shot].instantiate()
-				#r.name = str(randi_range(0, 3072))
-				#r.father = id
-				#r.fpath = parent_way
-				#r.position = get_node(parent_way).get_node('Camera3D/Marker3D').global_position
-				#rng.randomize()
-				#var cam = get_node(parent_way).get_node('Camera3D')
-				#r.rotation = cam.global_rotation + Vector3(rng.randf_range(-0.1,0.1),rng.randf_range(-0.09,0.11),rng.randf_range(-0.1,0.09))*0.2
-				#add_child(r,true)
+			r.apply_central_impulse(-(get_node(parent_way).get_node('Camera').global_transform.basis.z) * 90)
+		2:
+			for i in 5:
+				var r = shots[shot].instantiate()
+				r.name = str(randi_range(0, 3900))
+				r.caster = parent_way
+				r.position = get_node(parent_way).get_node('Camera/Marker3D').global_position
+				rng.randomize()
+				var cam = get_node(parent_way).get_node('Camera')
+				r.rotation_degrees = cam.global_rotation_degrees + spread[i]
+				add_child(r,true)
 
 func _explode(pos:Vector3):
 	var r = explo.instantiate()

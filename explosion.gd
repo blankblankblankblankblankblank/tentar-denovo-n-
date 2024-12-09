@@ -21,4 +21,4 @@ func _on_body_entered(hit):
 		var dist = position.distance_squared_to(hit.position)
 		var dir = position.direction_to(hit.position)
 		hit.Velocity += dir * (impulse - dist)
-		hit._on_hit(max( dmg - dist*0.55 ,1))
+		hit._on_hit.rpc(max( dmg - dist*0.55 ,1))

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bxjvlc8ewfk8l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_besvh"]
+load_path = "res://.godot/imported/text.png-623bebdd36aed6fbe461c229ea98b1f3.s3tc.ctex"
+
+[resource]
+albedo_texture = SubResource("CompressedTexture2D_besvh")
+roughness = 0.7

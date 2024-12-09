@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cuj03d5hl5yev"]
+
+[ext_resource type="Shader" path="res://warpshader_flicker.gdshader" id="1_yjj4c"]
+[ext_resource type="Texture2D" uid="uid://clx1ubnq5lwg8" path="res://exports/textures/whole.png" id="2_b7jrw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yjj4c")
+shader_parameter/warp_ScreenSpace = false
+shader_parameter/texture_albedo = ExtResource("2_b7jrw")

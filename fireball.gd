@@ -15,8 +15,9 @@ func _explosion():
 	queue_free()
 
 func _on_body_entered(hit):
-	if hit.is_in_group('jogador'):
-		if hit != get_node(caster):
-			hit._on_hit(dmg)
+	if hit != get_node(caster):
+		linear_velocity *= 0.35
+		if hit.is_in_group('jogador'):
+			hit._on_hit.rpc(dmg)
 			get_node(caster).hit_mark()
 			_explosion()
