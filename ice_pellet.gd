@@ -11,6 +11,6 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(hit):
 	if hit != get_node(caster):
 		if hit.is_in_group('jogador'):
-			hit._on_hit(dmg)
+			hit._on_hit.rpc(dmg)
 			get_node(caster).hit_mark()
 		queue_free()

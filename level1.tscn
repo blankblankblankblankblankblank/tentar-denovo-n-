@@ -3830,6 +3830,7 @@ cast_shadow = 0
 amount = 24
 lifetime = 1.2
 fixed_fps = 45
+visibility_aabb = AABB(-22.1854, -21, -22.2558, 44.6034, 46.1223, 44.7489)
 process_material = ExtResource("25_f384e")
 draw_pass_1 = SubResource("QuadMesh_50s0u")
 
@@ -3838,7 +3839,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -36.3347, 0)
 mesh = SubResource("BoxMesh_qc3v0")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Elements/Models"]
-transform = Transform3D(0.0902542, 0.995919, -4.3533e-08, 0, -4.37114e-08, -1, -0.995919, 0.0902542, -3.94514e-09, 0, 2000, 0)
+transform = Transform3D(0.461082, -0.887358, 3.87876e-08, 0, -4.37114e-08, -1, 0.887358, 0.461082, -2.01545e-08, 0, 2000, 0)
 material_override = ExtResource("28_6fvmw")
 pixel_size = 9.0
 double_sided = false

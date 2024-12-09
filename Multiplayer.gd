@@ -2,8 +2,6 @@ extends Node
 
 const PORT = 4433
 var peer = ENetMultiplayerPeer.new()
-var cor := Color(1,1,1)
-var nickname := 'Guest'
 
 func _ready():
 	# Start paused.
@@ -40,10 +38,12 @@ func _on_connect_pressed():
 	multiplayer.multiplayer_peer = peer
 	start_game()
 
-
 func start_game():
-	Options.cor = $UI/ColorPickerButton.color.clamp(Color(0.1,0.1,0.1,1),Color.WHITE)
-	Options.nick = $UI/nome.text
+	var data = [$UI/ColorPickerButton.color.clamp(Color(0.2,0.2,0.2),Color(0.85,0.85,0.85)),$UI/nome.text]
+	#var data = [$UI/ColorPickerButton.color,$UI/nome.text]
+	var file = FileAccess.open("user://ScumOfTheEarth.save", FileAccess.WRITE)
+	data = JSON.stringify(data)
+	file.store_line(data)
 	# Hide the UI and unpause to start the game.
 	$UI.hide()
 	get_tree().paused = false

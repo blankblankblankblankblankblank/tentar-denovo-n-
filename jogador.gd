@@ -10,12 +10,14 @@ var friction := 5.0
 var gravity = 56
 
 @export_category('mp elements')
-@export var nick:String
-@export var cor:Color
+@export var data := [Color(1,1,1),'Nombre']
 
 #stats
 @export_category('stats')
-@export var hp = 200
+@export var hp = 200:
+	set(hep):
+		hp = hep
+		get_node_or_null("Camera/Control/HpBar").value = hep
 @export var Velocity : Vector3
 
 #ui
@@ -37,13 +39,16 @@ var gravity = 56
 
 func _ready() -> void:
 	hpbar.value = hp
-	get_node('PlayerSync').set_visibility_for(player,false)
+	#get_node('PlayerSync').set_visibility_for(player,false)
 	%Control.visible = false
 	if multiplayer.get_unique_id() == player:
 		%Control.visible = true
 		mesh.visible = false
-	mesh.get_active_material(0).albedo_color = Options.cor
-	get_node('MeshInstance3D/Label3D').text = Options.nick
+	var _load = FileAccess.open("user://ScumOfTheEarth.save", FileAccess.READ).get_line()
+	var jason = JSON.new()
+	jason.parse(_load)
+	data = jason.data
+	$MeshInstance3D/Label3D.text = data[1]
 
 @rpc ("call_remote","any_peer")
 func rotate_rpc(camr:Vector3,rot:Vector3,path:NodePath):
@@ -53,9 +58,6 @@ func rotate_rpc(camr:Vector3,rot:Vector3,path:NodePath):
 #		mesma coisa tipo merda... só que melhor
 		get_node(path).cam.rotation.x = lerp_angle(get_node(path).cam.rotation.x,camr.x,0.7)
 		get_node(path).rotation.y = lerp_angle(get_node(path).rotation.y,rot.y,0.7)
-#		n tem nada a ver com rotação mas fds XD
-		#get_node(path).mesh.get_active_material(0).albedo_color = get_node(path).cor
-		#get_node(path).get_node('MeshInstance3D/Label3D').text = get_node(path).nick
 
 @rpc ("call_remote","any_peer")
 func position_rpc(pos:Vector3,path:NodePath):
@@ -66,7 +68,7 @@ func position_rpc(pos:Vector3,path:NodePath):
 		hpbar.value = hp
 
 func _physics_process(delta):
-	rotate_rpc.rpc(cam.rotation,rotation,get_path())
+	#rotate_rpc.rpc(cam.rotation,rotation,get_path())
 	var direction = transform.basis * (Vector3(input.direction.x, 0, input.direction.y)).normalized()
 	if direction:
 		Velocity = _accelerate(accel,direction,delta)
@@ -105,13 +107,10 @@ func _on_hit(dmg:int):
 		if hp <= 0:
 			get_parent().die.rpc(get_path())
 			velocity = Vector3.ZERO
-			hpbar.value = hp
 		position_rpc(position,get_path())
-		hpbar.value = hp
 	hpbar.value = hp
 
 func hit_mark():
-	hpbar.value = hp
 	$Camera/Control/TextureRect2.modulate.a = 1
 	var tween = create_tween()
 	$Camera/Control/TextureRect2.visible = true

@@ -89,6 +89,7 @@ alignment = 1
 max_length = 22
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 876.0
 offset_top = 239.0

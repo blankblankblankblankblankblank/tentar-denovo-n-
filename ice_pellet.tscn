@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://fkcfk325sgq2"]
+[gd_scene load_steps=10 format=3 uid="uid://fkcfk325sgq2"]
 
 [ext_resource type="Script" path="res://ice_pellet.gd" id="1_d84pu"]
 [ext_resource type="ArrayMesh" uid="uid://0vted0cfpvcq" path="res://crystal_dagger.tres" id="1_s6vlb"]
 [ext_resource type="Texture2D" uid="uid://7ett1a6ghp8t" path="res://Textures/ice_noise.tres" id="3_msyh5"]
+[ext_resource type="Texture2D" uid="uid://blix3fswxsint" path="res://exports/textures/text.png" id="4_504x2"]
 
 [sub_resource type="Gradient" id="Gradient_xa664"]
 offsets = PackedFloat32Array(0.181818, 0.669421, 1)
@@ -21,12 +22,13 @@ noise = SubResource("FastNoiseLite_e834d")
 albedo_texture = ExtResource("3_msyh5")
 metallic_specular = 1.0
 roughness = 0.0
-normal_enabled = true
 normal_scale = 2.0
 normal_texture = SubResource("NoiseTexture2D_yca5j")
-rim_enabled = true
 rim_tint = 1.0
 clearcoat_roughness = 1.0
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+subsurf_scatter_texture = ExtResource("4_504x2")
 uv1_scale = Vector3(3, 3, 3)
 uv1_triplanar = true
 uv1_world_triplanar = true

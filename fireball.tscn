@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bdorqcwr128kc" path="res://materials/fireparticles.tres" id="1_xkcdu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8xqfh"]
-margin = 0.1
+margin = 0.12
 radius = 0.33
 
 [sub_resource type="Shader" id="Shader_shtu8"]
@@ -161,7 +161,7 @@ material = ExtResource("1_xkcdu")
 [node name="fireball" type="RigidBody3D"]
 continuous_cd = true
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 3
 angular_damp_mode = 1
 angular_damp = 1.0
 script = ExtResource("1_osy0k")

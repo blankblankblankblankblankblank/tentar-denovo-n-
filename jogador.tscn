@@ -24,7 +24,10 @@ properties/2/spawn = true
 properties/2/replication_mode = 0
 properties/3/path = NodePath(".:position")
 properties/3/spawn = true
-properties/3/replication_mode = 2
+properties/3/replication_mode = 1
+properties/4/path = NodePath("MeshInstance3D/Label3D:text")
+properties/4/spawn = true
+properties/4/replication_mode = 2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2e807"]
 properties/0/path = NodePath("Input:direction")
@@ -39,7 +42,7 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("Input:arma")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-properties/4/path = NodePath("MeshInstance3D/Label3D:text")
+properties/4/path = NodePath(".:rotation")
 properties/4/spawn = true
 properties/4/replication_mode = 2
 
@@ -54,8 +57,8 @@ transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 
 mesh = ExtResource("3_k5vwb")
 
 [node name="Label3D" type="Label3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9, 0)
-pixel_size = 0.0065
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 3.96, 0)
+pixel_size = 0.015
 billboard = 1
 text = "Bobão
 "

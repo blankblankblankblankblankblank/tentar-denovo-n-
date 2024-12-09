@@ -16,6 +16,7 @@ var sense = 0.2;
 @onready var timers = [get_parent().get_node('armas/1'),
 						get_parent().get_node('armas/2'),
 						get_parent().get_node('armas/3')]
+@onready var cam = get_parent().get_node('Camera')
 
 func _enter_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -24,10 +25,6 @@ func _enter_tree() -> void:
 	set_process_input(is_multiplayer_authority())
 	#set_process(get_multiplayer_authority() == get_parent().player)
 	#set_process_input(get_multiplayer_authority() == get_parent().player)
-
-func _ready():
-	get_parent().nick = Options.nick
-	get_parent().cor = Options.cor
 
 func _config_altered():
 	sense = Config.get_config('InputSettings','MouseSensitivity',0.2)
@@ -59,10 +56,11 @@ func _input(event):
 	if !Options.visible:
 		if event is InputEventMouseMotion:
 			get_parent().rotate_y(deg_to_rad(-event.relative.x * sense))
-			%Camera.rotate_x(deg_to_rad(-event.relative.y * sense))
-			%Camera.rotation.x = clamp(%Camera.rotation.x, -PI/2, PI/2)
-			cam_rot = %Camera.rotation
+			cam.rotate_x(deg_to_rad(-event.relative.y * sense))
+			cam.rotation.x = clamp(cam.rotation.x, -PI/2, PI/2)
+			cam_rot = cam.rotation
 			rot = get_parent().rotation
+			get_parent().rotate_rpc.rpc(cam_rot,rot,get_parent().get_path())
 		if event is InputEventKey:
 			if int(OS.get_keycode_string(event.key_label)) != 0:
 				print(OS.get_keycode_string(event.key_label))
