@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://irmnbq2gafw4"]
+
+[ext_resource type="Texture2D" uid="uid://drw468wou7nsl" path="res://exports/textures/handtexture.png" id="1_k2s7u"]
+
+[resource]
+albedo_texture = ExtResource("1_k2s7u")
+texture_filter = 0
+texture_repeat = false

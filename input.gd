@@ -21,14 +21,28 @@ var sense = 0.2;
 func _enter_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	%Camera.current = is_multiplayer_authority()
+	%Camera/HandMesh.visible = is_multiplayer_authority()
 	set_process(is_multiplayer_authority())
 	set_process_input(is_multiplayer_authority())
 	#set_process(get_multiplayer_authority() == get_parent().player)
 	#set_process_input(get_multiplayer_authority() == get_parent().player)
 
+func _ready() -> void:
+	var _load = FileAccess.open("user://ScumOfTheEarth.save", FileAccess.READ).get_line()
+	var jason = JSON.new()
+	jason.parse(_load)
+	get_parent().data = jason.data
+	if %Camera/HandMesh.visible:
+		%Camera/HandMesh/animplayer.play("hand/default")
+
 func _config_altered():
 	sense = Config.get_config('InputSettings','MouseSensitivity',0.2)
 	%Camera.fov = Config.get_config('VideoSettings','FieldOfView',90)
+	%Camera/HandMesh.position.x = Config.get_config('VideoSettings','HandPosition',1)*0.2
+	if %Camera/HandMesh.position.x < 0:
+		%Camera/HandMesh.scale.z = -0.035
+	else:
+		%Camera/HandMesh.scale.z = 0.035
 
 @rpc("call_local")
 func jump():
@@ -49,6 +63,7 @@ func shoot():
 	if timers[arma].is_stopped():
 		get_parent().get_parent().add_shot(get_parent().get_path(),arma)
 		timers[arma].start()
+		%Camera/HandMesh/animplayer.play("hand/shoot")
 
 func _input(event):
 	if event.is_action_pressed('ui_text_clear_carets_and_selection'):
@@ -68,3 +83,7 @@ func _input(event):
 
 func _on_jump_timer_timeout() -> void:
 	jumping = false
+
+func _on_animplayer_animation_finished(anim_name: StringName) -> void:
+	if anim_name == 'hand/shoot':
+		%Camera/HandMesh/animplayer.play("hand/default")

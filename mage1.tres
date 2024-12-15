@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://blix3fswxsint" path="res://exports/textures/text.png" id="1_bpil6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pv18j"]
+albedo_color = Color(0.8, 0.3, 1, 1)
 albedo_texture = ExtResource("1_bpil6")
 roughness = 0.7
 

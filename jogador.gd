@@ -44,10 +44,6 @@ func _ready() -> void:
 	if multiplayer.get_unique_id() == player:
 		%Control.visible = true
 		mesh.visible = false
-	var _load = FileAccess.open("user://ScumOfTheEarth.save", FileAccess.READ).get_line()
-	var jason = JSON.new()
-	jason.parse(_load)
-	data = jason.data
 	$MeshInstance3D/Label3D.text = data[1]
 
 @rpc ("call_remote","any_peer")
@@ -101,6 +97,7 @@ func _friction(delta: float) -> Vector3:
 
 @rpc ("call_remote",'any_peer')
 func _on_hit(dmg:int):
+	$MeshInstance3D/Label3D.text = data[1]
 	if multiplayer.get_unique_id() == 1:
 		hp -= dmg
 		print(str(player)+': HP '+str(hp))

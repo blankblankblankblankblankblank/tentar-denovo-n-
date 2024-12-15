@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcl3xaibxftnr"]
+
+[ext_resource type="Script" path="res://shotsfired.gd" id="1_171cy"]
+[ext_resource type="PackedScene" uid="uid://fkcfk325sgq2" path="res://ice_pellet.tscn" id="2_kr5qa"]
+
+[node name="fire" type="Node3D"]
+script = ExtResource("1_171cy")
+
+[node name="Area3D" parent="." instance=ExtResource("2_kr5qa")]
+
+[node name="Area3D2" parent="." instance=ExtResource("2_kr5qa")]
+transform = Transform3D(0.999848, 0.000304586, -0.0174497, 0, 0.999848, 0.0174524, 0.0174524, -0.0174497, 0.999695, -0.01, -0.01, 0)
+
+[node name="Area3D3" parent="." instance=ExtResource("2_kr5qa")]
+transform = Transform3D(0.999848, -0.000304586, -0.0174497, 0, 0.999848, -0.0174524, 0.0174524, 0.0174497, 0.999695, 0.01, -0.01, 0)
+
+[node name="Area3D4" parent="." instance=ExtResource("2_kr5qa")]
+transform = Transform3D(0.999848, -0.000304586, 0.0174497, 0, 0.999848, 0.0174524, -0.0174524, -0.0174497, 0.999695, -0.01, 0.01, 0)
+
+[node name="Area3D5" parent="." instance=ExtResource("2_kr5qa")]
+transform = Transform3D(0.999848, 0.000304586, 0.0174497, 0, 0.999848, -0.0174524, -0.0174524, 0.0174497, 0.999695, 0.00986284, 0.00999141, 0)
