@@ -50,15 +50,15 @@ volumetric_fog_density = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r0wf"]
 albedo_texture = ExtResource("5_ig105")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo00f"]
 albedo_texture = ExtResource("6_fs0mt")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxnod"]
 albedo_texture = ExtResource("7_83mpx")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tonb8"]
 _surfaces = [{
@@ -191,7 +191,7 @@ points = PackedVector3Array(-37, -15.25, -94, -37, -16, -94, -29, -16, -94, -29,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01wfj"]
 albedo_texture = ExtResource("8_d1jn1")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_in8fc"]
 _surfaces = [{
@@ -222,11 +222,11 @@ points = PackedVector3Array(-8, -1.1144, 6, -8, -25.1144, 14, 8, -25.1144, 14, 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kn7p6"]
 albedo_texture = ExtResource("9_eyixn")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h445d"]
 albedo_texture = ExtResource("10_7kv6i")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gnim8"]
 _surfaces = [{
@@ -266,7 +266,7 @@ points = PackedVector3Array(-5.02083, 11.3731, -13.625, -5.02083, 10.8731, -13.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxe8k"]
 albedo_texture = ExtResource("11_4ciig")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wfso1"]
 _surfaces = [{
@@ -318,7 +318,7 @@ points = PackedVector3Array(6, 4.41667, -7.08333, 6, -4.58333, -7.08333, 7, -4.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaaix"]
 albedo_texture = ExtResource("12_5wgnm")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_om6yo"]
 _surfaces = [{
@@ -382,7 +382,7 @@ points = PackedVector3Array(-4.55152, 4.74848, -8.55758, -5.05152, 4.74848, -8.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbgnk"]
 albedo_texture = ExtResource("13_f8e3i")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hya6d"]
 _surfaces = [{
@@ -443,19 +443,19 @@ points = PackedVector3Array(-8.22321, 5.03531, 48.25, -8.22321, -8.21469, 56.25,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx3gs"]
 albedo_texture = ExtResource("14_4nvg6")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wwm2"]
 albedo_texture = ExtResource("15_fwrv7")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0x0wv"]
 albedo_texture = ExtResource("16_i4nc4")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fchp3"]
 albedo_texture = ExtResource("17_genja")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lbj0n"]
 _surfaces = [{
@@ -546,7 +546,7 @@ points = PackedVector3Array(77.9167, 9.3776, -12, 67.9167, 6.47135, -12, 77.9167
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fng1j"]
 albedo_texture = ExtResource("18_sjtc8")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a3rd7"]
 _surfaces = [{
@@ -595,7 +595,7 @@ points = PackedVector3Array(43.6667, 10.9167, -36, 43.6667, -8.08333, -36, 45.66
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiupq"]
 albedo_texture = ExtResource("19_50wki")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ctbvg"]
 _surfaces = [{
@@ -785,15 +785,15 @@ points = PackedVector3Array(20.8144, 3.77569, 0.815365, 20.8144, -1.22431, 0.815
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox2wj"]
 albedo_texture = ExtResource("20_cd3i7")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mgqx"]
 albedo_texture = ExtResource("21_c5u5q")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqkxu"]
 albedo_texture = ExtResource("22_jvnit")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5qx7o"]
 _surfaces = [{
@@ -1691,15 +1691,15 @@ points = PackedVector3Array(-3.03432, -7.96391, 93.6462, -3.03432, -8.58296, 93.
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqjif"]
 albedo_texture = ExtResource("23_4thls")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_id8me"]
 albedo_texture = ExtResource("24_37apk")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v36ko"]
 albedo_texture = ExtResource("25_hiapk")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_d0ux3"]
 _surfaces = [{
@@ -2127,8 +2127,8 @@ shader_parameter/text = SubResource("NoiseTexture2D_j3rub")
 [sub_resource type="BoxMesh" id="BoxMesh_qc3v0"]
 material = SubResource("ShaderMaterial_12eta")
 size = Vector3(167, 1.75, 87)
-subdivide_width = 64
-subdivide_depth = 32
+subdivide_width = 32
+subdivide_depth = 16
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v7dy4"]
 points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -2138,7 +2138,7 @@ script = ExtResource("1_18jih")
 spawn_positions = [NodePath("Elements/Spawnpoits/Marker3D1"), NodePath("Elements/Spawnpoits/Marker3D2"), NodePath("Elements/Spawnpoits/Marker3D3"), NodePath("Elements/Spawnpoits/Marker3D4"), NodePath("Elements/Spawnpoits/Marker3D5"), NodePath("Elements/Spawnpoits/Marker3D6"), NodePath("Elements/Spawnpoits/Marker3D7"), NodePath("Elements/Spawnpoits/Marker3D8"), NodePath("Elements/Spawnpoits/Marker3D9"), NodePath("Elements/Spawnpoits/Marker3D10"), NodePath("Elements/Spawnpoits/Marker3D11"), NodePath("Elements/Spawnpoits/Marker3D12")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://jogador.tscn")
+_spawnable_scenes = PackedStringArray("res://Death.tscn", "res://jogador.tscn")
 spawn_path = NodePath("..")
 
 [node name="WorldSync" type="MultiplayerSynchronizer" parent="."]
@@ -2159,10 +2159,22 @@ mesh = SubResource("ArrayMesh_tonb8")
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_iw1wn")
 
+[node name="entity_0_brush_0_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+shape = SubResource("ConvexPolygonShape3D_iw1wn")
+
 [node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_o1u5t")
 
+[node name="entity_0_brush_1_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+shape = SubResource("ConvexPolygonShape3D_o1u5t")
+
 [node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_rrcoe")
+
+[node name="entity_0_brush_2_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
 shape = SubResource("ConvexPolygonShape3D_rrcoe")
 
 [node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
@@ -2171,7 +2183,15 @@ shape = SubResource("ConvexPolygonShape3D_wfr5u")
 [node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_6fhrd")
 
+[node name="entity_0_brush_4_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+shape = SubResource("ConvexPolygonShape3D_6fhrd")
+
 [node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_bk78m")
+
+[node name="entity_0_brush_5_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 shape = SubResource("ConvexPolygonShape3D_bk78m")
 
 [node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
@@ -2207,6 +2227,10 @@ shape = SubResource("ConvexPolygonShape3D_rv3bo")
 [node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_etoa6")
 
+[node name="entity_0_brush_16_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+shape = SubResource("ConvexPolygonShape3D_etoa6")
+
 [node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_pdfli")
 
@@ -2216,10 +2240,22 @@ shape = SubResource("ConvexPolygonShape3D_8c85r")
 [node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_l0klu")
 
+[node name="entity_0_brush_19_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+shape = SubResource("ConvexPolygonShape3D_l0klu")
+
 [node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_d06da")
 
+[node name="entity_0_brush_20_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+shape = SubResource("ConvexPolygonShape3D_d06da")
+
 [node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_64gj2")
+
+[node name="entity_0_brush_21_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 shape = SubResource("ConvexPolygonShape3D_64gj2")
 
 [node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="Node3D/entity_0_worldspawn"]
@@ -2376,6 +2412,10 @@ shape = SubResource("ConvexPolygonShape3D_1wohv")
 [node name="entity_7_brush_3_collision_shape" type="CollisionShape3D" parent="Node3D/entity_7_func_group"]
 shape = SubResource("ConvexPolygonShape3D_3np81")
 
+[node name="entity_7_brush_3_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_7_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+shape = SubResource("ConvexPolygonShape3D_3np81")
+
 [node name="entity_7_brush_4_collision_shape" type="CollisionShape3D" parent="Node3D/entity_7_func_group"]
 shape = SubResource("ConvexPolygonShape3D_mm06o")
 
@@ -2395,6 +2435,10 @@ shape = SubResource("ConvexPolygonShape3D_w023j")
 shape = SubResource("ConvexPolygonShape3D_ccr3d")
 
 [node name="entity_7_brush_10_collision_shape" type="CollisionShape3D" parent="Node3D/entity_7_func_group"]
+shape = SubResource("ConvexPolygonShape3D_7x2vm")
+
+[node name="entity_7_brush_10_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_7_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
 shape = SubResource("ConvexPolygonShape3D_7x2vm")
 
 [node name="entity_7_brush_11_collision_shape" type="CollisionShape3D" parent="Node3D/entity_7_func_group"]
@@ -2443,7 +2487,15 @@ shape = SubResource("ConvexPolygonShape3D_uvtpp")
 [node name="entity_8_brush_9_collision_shape" type="CollisionShape3D" parent="Node3D/entity_8_func_group"]
 shape = SubResource("ConvexPolygonShape3D_w5v4h")
 
+[node name="entity_8_brush_9_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_8_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+shape = SubResource("ConvexPolygonShape3D_w5v4h")
+
 [node name="entity_8_brush_10_collision_shape" type="CollisionShape3D" parent="Node3D/entity_8_func_group"]
+shape = SubResource("ConvexPolygonShape3D_a1b2r")
+
+[node name="entity_8_brush_10_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_8_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
 shape = SubResource("ConvexPolygonShape3D_a1b2r")
 
 [node name="entity_8_brush_11_collision_shape" type="CollisionShape3D" parent="Node3D/entity_8_func_group"]
@@ -2462,16 +2514,36 @@ shape = SubResource("ConvexPolygonShape3D_c3voq")
 [node name="entity_9_brush_1_collision_shape" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
 shape = SubResource("ConvexPolygonShape3D_5jsy5")
 
+[node name="entity_9_brush_1_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
+shape = SubResource("ConvexPolygonShape3D_5jsy5")
+
 [node name="entity_9_brush_2_collision_shape" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+shape = SubResource("ConvexPolygonShape3D_b0b27")
+
+[node name="entity_9_brush_2_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
 shape = SubResource("ConvexPolygonShape3D_b0b27")
 
 [node name="entity_9_brush_3_collision_shape" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
 shape = SubResource("ConvexPolygonShape3D_sm8cm")
 
+[node name="entity_9_brush_3_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
+shape = SubResource("ConvexPolygonShape3D_sm8cm")
+
 [node name="entity_9_brush_4_collision_shape" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
 shape = SubResource("ConvexPolygonShape3D_u6th4")
 
+[node name="entity_9_brush_4_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
+shape = SubResource("ConvexPolygonShape3D_u6th4")
+
 [node name="entity_9_brush_5_collision_shape" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+shape = SubResource("ConvexPolygonShape3D_diciy")
+
+[node name="entity_9_brush_5_collision_shape2" type="CollisionShape3D" parent="Node3D/entity_9_func_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
 shape = SubResource("ConvexPolygonShape3D_diciy")
 
 [node name="entity_10_func_group" type="StaticBody3D" parent="Node3D"]
@@ -3839,7 +3911,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -36.3347, 0)
 mesh = SubResource("BoxMesh_qc3v0")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Elements/Models"]
-transform = Transform3D(-0.862251, -0.506481, 2.2139e-08, 0, -4.37114e-08, -1, 0.506481, -0.862251, 3.76902e-08, 0, 2000, 0)
+transform = Transform3D(0.901056, 0.433706, -1.89579e-08, 0, -4.37115e-08, -1, -0.433706, 0.901056, -3.93864e-08, 0, 2000, 0)
 material_override = ExtResource("28_6fvmw")
 pixel_size = 12.0
 double_sided = false
@@ -3924,39 +3996,49 @@ light_bake_mode = 1
 omni_range = 16.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Elements/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0875, -35.129, 28.977)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0875, -32.089, 28.977)
 light_color = Color(0, 0.564706, 1, 1)
 light_energy = 16.0
 light_size = 0.4
 light_specular = 1.0
 light_bake_mode = 1
 shadow_enabled = true
+shadow_bias = 1.0
+shadow_blur = 0.5
 distance_fade_enabled = true
-omni_range = 22.9
+distance_fade_shadow = 10.0
+omni_range = 20.0
 omni_attenuation = 0.292411
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Elements/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8334, -35.129, -30.9314)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8334, -32.409, -29.9714)
 light_color = Color(0, 0.564706, 1, 1)
 light_energy = 16.0
 light_size = 0.4
 light_specular = 1.0
 light_bake_mode = 1
 shadow_enabled = true
+shadow_bias = 1.0
+shadow_blur = 0.5
 distance_fade_enabled = true
-omni_range = 22.9
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+omni_range = 20.0
 omni_attenuation = 0.292411
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Elements/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6313, -35.129, 25.8491)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8713, -32.889, 15.4491)
 light_color = Color(0, 0.564706, 1, 1)
 light_energy = 16.0
 light_size = 0.4
 light_specular = 1.0
 light_bake_mode = 1
 shadow_enabled = true
+shadow_bias = 1.0
+shadow_blur = 0.5
 distance_fade_enabled = true
-omni_range = 22.9
+distance_fade_shadow = 10.0
+omni_range = 20.0
 omni_attenuation = 0.292411
 
 [node name="fireballLight" type="OmniLight3D" parent="Elements/Lights"]

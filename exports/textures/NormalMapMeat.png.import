@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drw468wou7nsl"
-path="res://.godot/imported/handtexture.png-6fe6699867b5aa21b6e153b4799d87f0.ctex"
+uid="uid://kjiukj48p2ck"
+path="res://.godot/imported/NormalMapMeat.png-7504f7667394f4ab896fea343e95a59c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://exports/textures/handtexture.png"
-dest_files=["res://.godot/imported/handtexture.png-6fe6699867b5aa21b6e153b4799d87f0.ctex"]
+source_file="res://exports/textures/NormalMapMeat.png"
+dest_files=["res://.godot/imported/NormalMapMeat.png-7504f7667394f4ab896fea343e95a59c.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.8
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

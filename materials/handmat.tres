@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://drw468wou7nsl" path="res://exports/textures/handtexture.png" id="1_k2s7u"]
 
 [resource]
+shading_mode = 2
 albedo_texture = ExtResource("1_k2s7u")
 texture_filter = 0
 texture_repeat = false

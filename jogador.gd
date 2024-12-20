@@ -6,7 +6,7 @@ const MAXVEL = 22.0
 const MINVEL = 18.0
 var accel := 24.0
 var friction := 5.0
-
+var is_dead = false
 var gravity = 56
 
 @export_category('mp elements')
@@ -64,7 +64,7 @@ func position_rpc(pos:Vector3,path:NodePath):
 		hpbar.value = hp
 
 func _physics_process(delta):
-	#rotate_rpc.rpc(cam.rotation,rotation,get_path())
+	rotate_rpc.rpc(cam.rotation,rotation,get_path())
 	var direction = transform.basis * (Vector3(input.direction.x, 0, input.direction.y)).normalized()
 	if direction:
 		Velocity = _accelerate(accel,direction,delta)
@@ -98,14 +98,17 @@ func _friction(delta: float) -> Vector3:
 @rpc ("call_remote",'any_peer')
 func _on_hit(dmg:int):
 	$MeshInstance3D/Label3D.text = data[1]
-	if multiplayer.get_unique_id() == 1:
+	if is_multiplayer_authority():
 		hp -= dmg
 		print(str(player)+': HP '+str(hp))
 		if hp <= 0:
+			await get_tree().create_timer(0.1).timeout
 			get_parent().die.rpc(get_path())
 			velocity = Vector3.ZERO
+			Velocity = Vector3.ZERO
 		position_rpc(position,get_path())
 	hpbar.value = hp
+	$GPUParticles3D.emitting = true
 
 func hit_mark():
 	$Camera/Control/TextureRect2.modulate.a = 1

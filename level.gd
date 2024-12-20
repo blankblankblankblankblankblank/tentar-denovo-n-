@@ -2,9 +2,10 @@ extends Node3D
 
 const SPAWN_RANDOM := 5.0
 
-# raio = 0
+# raio = 0 fireball = 1 shotgun ice = 2
 const shots = [preload('res://raio.tscn'),preload('res://fireball.tscn'),preload('res://shotsfired.tscn')]
 
+const Death = preload('res://Death.tscn')
 const explo = preload('res://explosion.tscn')
 @export var spawn_positions := []
 @onready var worldsync = get_node('WorldSync')
@@ -31,15 +32,17 @@ func _ready() -> void:
 
 @rpc("call_local",'authority')
 func die(path):
-	get_node(path).hp = 200
+	var dead = Death.instantiate()
+	dead.position = get_node(path).position
+	add_child(dead)
 	get_node(path).position = get_node(spawn_positions.pick_random()).global_position
+	get_node(path).hp = 200
 
 func _exit_tree():
 	if not multiplayer.is_server(): 
 		return
 	multiplayer.peer_connected.disconnect(add_player)
 	multiplayer.peer_disconnected.disconnect(del_player)
-
 
 func add_player(id: int):
 	var character = load("res://jogador.tscn").instantiate()

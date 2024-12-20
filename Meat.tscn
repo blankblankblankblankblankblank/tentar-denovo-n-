@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc1iw8rv3ko10"]
+
+[ext_resource type="ArrayMesh" uid="uid://tk5j3lakjjpi" path="res://MeatMesh.tres" id="1_iael6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sfoxu"]
+radius = 0.25
+
+[node name="Meat" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.2, -0.1, -0.1)
+mesh = ExtResource("1_iael6")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_sfoxu")

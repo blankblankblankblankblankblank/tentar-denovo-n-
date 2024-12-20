@@ -76,11 +76,27 @@ func _input(event):
 			cam_rot = cam.rotation
 			rot = get_parent().rotation
 			get_parent().rotate_rpc.rpc(cam_rot,rot,get_parent().get_path())
-		if event is InputEventKey:
-			if int(OS.get_keycode_string(event.key_label)) != 0:
-				print(OS.get_keycode_string(event.key_label))
-				arma = int(OS.get_keycode_string(event.key_label))-1
-
+		if event.is_action_pressed('1'):
+			arma = 0
+		elif event.is_action_pressed('2'):
+			arma = 1
+		elif event.is_action_pressed('3'):
+			arma = 2
+		
+#		foi bom equanto durou
+		#if event is InputEventKey:
+			#if int(OS.get_keycode_string(event.key_label)) != 0:
+				#print(OS.get_keycode_string(event.key_label))
+				#arma = int(OS.get_keycode_string(event.key_label))-1
+		
+		#Players Tab
+		if Input.is_action_pressed('TAB'):
+			%Control/VBoxContainer.visible = true
+			%Control/Panel.visible = true
+			%Control/VBoxContainer._update()
+		else:
+			%Control/VBoxContainer.visible = false
+			%Control/Panel.visible = false
 func _on_jump_timer_timeout() -> void:
 	jumping = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bbpdo31dhe65b"]
+[gd_scene load_steps=28 format=4 uid="uid://bbpdo31dhe65b"]
 
 [ext_resource type="Script" path="res://jogador.gd" id="1_a85vn"]
 [ext_resource type="Texture2D" uid="uid://x50cwfy0fb7j" path="res://exports/textures/texture.png" id="2_bmnax"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://duvp04inuj0sp" path="res://overlay.png" id="4_0y44m"]
 [ext_resource type="AnimationLibrary" uid="uid://dqj5r16tmavdk" path="res://hand_library_animation.res" id="4_1pf05"]
 [ext_resource type="Texture2D" uid="uid://bnv0xyncv2mvh" path="res://hp_trovão.png" id="5_y18oi"]
+[ext_resource type="Script" path="res://PlayerCount.gd" id="9_s55pv"]
+[ext_resource type="Texture2D" uid="uid://dgv83wqlgf0ck" path="res://exports/textures/Blood.png" id="10_58xr5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eq8i0"]
 radius = 0.6
@@ -129,7 +131,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("Armature/Skeleton3D:Bone.001")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, -0.382683, -2.04296e-08, -2.04296e-08, 0.92388)
 tracks/1/type = "scale_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -180,12 +182,35 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("Input:arma")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-properties/4/path = NodePath(".:rotation")
+properties/4/path = NodePath(".:data")
 properties/4/spawn = true
-properties/4/replication_mode = 2
-properties/5/path = NodePath(".:data")
-properties/5/spawn = true
-properties/5/replication_mode = 0
+properties/4/replication_mode = 0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qoaig"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 2.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lem4"]
+transparency = 2
+alpha_scissor_threshold = 0.9
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("10_58xr5")
+texture_filter = 2
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_qv7sj"]
+material = SubResource("StandardMaterial3D_6lem4")
+size = Vector2(0.25, 0.25)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["jogador"]]
 script = ExtResource("1_a85vn")
@@ -195,7 +220,6 @@ shape = SubResource("CapsuleShape3D_eq8i0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.5299e-08, 0, 0.35, 0, 0.35, 0, -0.35, 0, -1.5299e-08, 0, -0.3, 0)
-visible = false
 mesh = SubResource("ArrayMesh_q0j7x")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_axt88")
@@ -216,6 +240,7 @@ near = 0.1
 
 [node name="HandMesh" type="Node3D" parent="Camera"]
 transform = Transform3D(-1.5299e-09, 0, 0.035, 0, 0.035, 0, -0.035, 0, -1.5299e-09, 0, -0.17, -0.04)
+visible = false
 
 [node name="Armature" type="Node3D" parent="Camera/HandMesh"]
 transform = Transform3D(0, 9.5, 0, -9.5, 0, 0, 0, 0, 9.5, -6, 0, 0)
@@ -233,63 +258,63 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 5.33851e-08, -2.21128e-08, -2.21128e-08, 0.707107, 0.707107, 5.33851e-08, -0.707107, 0.707107, 0, 1, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(1.77636e-15, 1, 0)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/1/rotation = Quaternion(-0.382683, -2.04296e-08, -2.04296e-08, 0.92388)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 7.13445e-08, -2.8922e-07, 2.71875e-08, 0.944986, 0.327111, 2.96647e-07, -0.327111, 0.944986, 0, 1, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(1.77636e-15, 1, 0)
-bones/2/rotation = Quaternion(-0.166041, 0.0100024, 0.0600146, 0.98424)
+bones/2/rotation = Quaternion(-0.165852, -1.48524e-07, -1.11943e-08, 0.986151)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.009"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 1.02685e-07, -1.72697e-08, -1.02685e-07, 0.944986, -0.32711, -1.72699e-08, 0.32711, 0.944986, -6.59075e-15, 0.289617, -2.07122e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(7.10543e-15, 0.289617, 2.37033e-14)
-bones/3/rotation = Quaternion(0.165701, -0.00708355, 0.0421184, 0.985251)
+bones/3/rotation = Quaternion(0.165852, 4.0936e-14, -5.20637e-08, 0.986151)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Bone.003"
 bones/4/parent = 0
 bones/4/rest = Transform3D(1, 7.50003e-08, 1.71575e-07, -9.41725e-08, 0.993409, 0.114624, -1.61847e-07, -0.114624, 0.993409, 0, 1, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(1.77636e-15, 1, 0)
-bones/4/rotation = Quaternion(-0.0440079, 0.185033, 0.0710127, 0.979175)
+bones/4/rotation = Quaternion(-0.0574067, 8.34931e-08, -4.23631e-08, 0.998351)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Bone.008"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, -1.86746e-08, 1.07389e-09, 1.86746e-08, 0.993409, -0.114624, 1.07375e-09, 0.114624, 0.993409, 4.44045e-15, 0.2755, -1.19401e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(-3.55271e-15, 0.2755, 3.72528e-09)
-bones/5/rotation = Quaternion(0.0631681, -0.114016, 0.0573665, 0.989808)
+bones/5/rotation = Quaternion(0.0574067, 3.34079e-14, 9.35275e-09, 0.998351)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone.004"
 bones/6/parent = 0
 bones/6/rest = Transform3D(1, 7.50003e-08, 1.54267e-07, -5.68233e-08, 0.993409, -0.114624, -1.61847e-07, 0.114624, 0.993409, 0, 1, 0)
 bones/6/enabled = true
 bones/6/position = Vector3(1.77636e-15, 1, 0)
-bones/6/rotation = Quaternion(0.0709965, 0.270987, 0.0439978, 0.958953)
-bones/6/scale = Vector3(0.991056, 0.991056, 0.991056)
+bones/6/rotation = Quaternion(0.0574067, 7.91589e-08, -3.30103e-08, 0.998351)
+bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Bone.007"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 1.86746e-08, 1.0739e-09, -1.86746e-08, 0.993409, 0.114624, 1.07374e-09, -0.114624, 0.993409, 4.89156e-15, 0.2755, -5.45188e-09)
 bones/7/enabled = true
 bones/7/position = Vector3(-7.10543e-15, 0.2755, -3.7253e-09)
-bones/7/rotation = Quaternion(-0.0571973, 0.00489928, 0.0852025, 0.994708)
+bones/7/rotation = Quaternion(-0.0574067, 3.76861e-14, -9.35274e-09, 0.998351)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Bone.005"
 bones/8/parent = 0
 bones/8/rest = Transform3D(1, 7.13445e-08, -3.38613e-07, -1.78183e-07, 0.944986, -0.327111, 2.96647e-07, 0.327111, 0.944986, 0, 1, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(1.77636e-15, 1, 0)
-bones/8/rotation = Quaternion(0.17708, 0.123056, 0.00800361, 0.97644)
-bones/8/scale = Vector3(0.991056, 0.991056, 0.991056)
+bones/8/rotation = Quaternion(0.165852, -1.61045e-07, -6.3258e-08, 0.986151)
+bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.006"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, -1.02685e-07, -1.72698e-08, 1.02685e-07, 0.944986, 0.327111, -1.72698e-08, -0.327111, 0.944986, -4.78055e-15, 0.289617, -1.55118e-08)
 bones/9/enabled = true
 bones/9/position = Vector3(-3.55271e-15, 0.289617, 2.37033e-14)
-bones/9/rotation = Quaternion(-0.165247, 0.0141553, 0.084167, 0.982552)
+bones/9/rotation = Quaternion(-0.165852, 1.32996e-14, 5.20638e-08, 0.986151)
 bones/9/scale = Vector3(1, 1, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="Camera/HandMesh/Armature/Skeleton3D"]
@@ -309,7 +334,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="Control" type="Control" parent="Camera"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -377,6 +401,23 @@ texture_over = ExtResource("4_0y44m")
 texture_progress = ExtResource("5_y18oi")
 tint_under = Color(0.478431, 0.478431, 0.478431, 0.470588)
 
+[node name="Panel" type="Panel" parent="Camera/Control"]
+visible = false
+modulate = Color(1, 1, 1, 0.4)
+layout_mode = 2
+anchor_right = 0.176215
+anchor_bottom = 0.304012
+offset_bottom = -1.52588e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Control"]
+layout_mode = 0
+anchor_right = 0.176215
+anchor_bottom = 0.304012
+offset_bottom = -1.52588e-05
+script = ExtResource("9_s55pv")
+metadata/_edit_use_anchors_ = true
+
 [node name="PlayerSync" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_qce3e")
 
@@ -402,6 +443,17 @@ one_shot = true
 [node name="3" type="Timer" parent="armas"]
 wait_time = 0.3
 one_shot = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qoaig")
+draw_pass_1 = SubResource("QuadMesh_qv7sj")
 
 [connection signal="animation_finished" from="Camera/HandMesh/animplayer" to="Input" method="_on_animplayer_animation_finished"]
 [connection signal="timeout" from="Input/JumpTimer" to="Input" method="_on_jump_timer_timeout"]
