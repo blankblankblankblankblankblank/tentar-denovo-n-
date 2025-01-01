@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn2nfbl3vm17k"
-path="res://.godot/imported/crt4t.jpg-672cbdbc05c7418cb49c2c7b5a356d55.ctex"
+path="res://.godot/imported/crt4t.jpg-6c2d637cd802825fd27592a12db3a3aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/crt4t.jpg"
-dest_files=["res://.godot/imported/crt4t.jpg-672cbdbc05c7418cb49c2c7b5a356d55.ctex"]
+source_file="res://textures/crt4t.jpg"
+dest_files=["res://.godot/imported/crt4t.jpg-6c2d637cd802825fd27592a12db3a3aa.ctex"]
 
 [params]
 

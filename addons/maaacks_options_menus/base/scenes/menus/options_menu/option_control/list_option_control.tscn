@@ -9,6 +9,10 @@ lock_titles = false
 option_values = []
 option_titles = []
 
+[node name="OptionLabel" parent="." index="0"]
+text = " :"
+language = "en"
+
 [node name="OptionButton" type="OptionButton" parent="." index="1"]
 unique_name_in_owner = true
 layout_mode = 2

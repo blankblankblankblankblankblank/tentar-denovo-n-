@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbhvkl0e3xgrp"]
 
 [ext_resource type="Script" path="res://death.gd" id="1_n2qq4"]
-[ext_resource type="Texture2D" uid="uid://dgv83wqlgf0ck" path="res://exports/textures/Blood.png" id="2_xo7ly"]
+[ext_resource type="Texture2D" uid="uid://jqrtrvgqkqmt" path="res://exports/textures/Blood.png" id="2_xo7ly"]
 
 [node name="Death" type="Node3D"]
 script = ExtResource("1_n2qq4")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+layers = 4
 modulate = Color(1, 1, 1, 0.8)
 pixel_size = 0.4
 billboard = 1

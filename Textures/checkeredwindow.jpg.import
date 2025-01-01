@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbnn4bcshlwu"
-path.s3tc="res://.godot/imported/checkeredwindow.jpg-987e851d1e6b26b9fd138fb271eaf7ef.s3tc.ctex"
+path.s3tc="res://.godot/imported/checkeredwindow.jpg-3e86d15388cf119934fe38573d598d6c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/checkeredwindow.jpg"
-dest_files=["res://.godot/imported/checkeredwindow.jpg-987e851d1e6b26b9fd138fb271eaf7ef.s3tc.ctex"]
+source_file="res://textures/checkeredwindow.jpg"
+dest_files=["res://.godot/imported/checkeredwindow.jpg-3e86d15388cf119934fe38573d598d6c.s3tc.ctex"]
 
 [params]
 

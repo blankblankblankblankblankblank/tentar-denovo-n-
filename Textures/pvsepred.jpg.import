@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://80f7gswbguvc"
-path.s3tc="res://.godot/imported/pvsepred.jpg-4d945c07eda55607b0e0eacd88a023fe.s3tc.ctex"
+path.s3tc="res://.godot/imported/pvsepred.jpg-3e012386db2c82fe497a00fbc52fb415.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/pvsepred.jpg"
-dest_files=["res://.godot/imported/pvsepred.jpg-4d945c07eda55607b0e0eacd88a023fe.s3tc.ctex"]
+source_file="res://textures/pvsepred.jpg"
+dest_files=["res://.godot/imported/pvsepred.jpg-3e012386db2c82fe497a00fbc52fb415.s3tc.ctex"]
 
 [params]
 

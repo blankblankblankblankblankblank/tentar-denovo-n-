@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://danty314ubshw"]
+
+[ext_resource type="Texture2D" uid="uid://cbnn4bcshlwu" path="res://textures/checkeredwindow.jpg" id="1_62c4r"]
+
+[resource]
+albedo_texture = ExtResource("1_62c4r")
+metallic_specular = 0.0
+texture_filter = 2

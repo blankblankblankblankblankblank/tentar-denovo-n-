@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bixjysae61dvv"
-path="res://.godot/imported/brownwindow.jpg-e5fc335d0fd5a386fb9c3691c91df306.ctex"
+path="res://.godot/imported/brownwindow.jpg-7941fb8cbe83f19c08ba7290d36953a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/brownwindow.jpg"
-dest_files=["res://.godot/imported/brownwindow.jpg-e5fc335d0fd5a386fb9c3691c91df306.ctex"]
+source_file="res://textures/brownwindow.jpg"
+dest_files=["res://.godot/imported/brownwindow.jpg-7941fb8cbe83f19c08ba7290d36953a4.ctex"]
 
 [params]
 

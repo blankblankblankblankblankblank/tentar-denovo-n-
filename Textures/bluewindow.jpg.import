@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crvcv80yausvi"
-path.s3tc="res://.godot/imported/bluewindow.jpg-1ce9de28fc25b735f6785ac2b294d163.s3tc.ctex"
+path.s3tc="res://.godot/imported/bluewindow.jpg-204a36c75a5cd8ce7c4ff595b2b8f0fa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/bluewindow.jpg"
-dest_files=["res://.godot/imported/bluewindow.jpg-1ce9de28fc25b735f6785ac2b294d163.s3tc.ctex"]
+source_file="res://textures/bluewindow.jpg"
+dest_files=["res://.godot/imported/bluewindow.jpg-204a36c75a5cd8ce7c4ff595b2b8f0fa.s3tc.ctex"]
 
 [params]
 

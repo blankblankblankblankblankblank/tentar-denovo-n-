@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6kjbeykrst3k"
-path="res://.godot/imported/wdcord1.jpg-2641654c95a239810cca83df46784d71.ctex"
+path="res://.godot/imported/wdcord1.jpg-25406e3e8afafc4e835bbc7f6095c8ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/wdcord1.jpg"
-dest_files=["res://.godot/imported/wdcord1.jpg-2641654c95a239810cca83df46784d71.ctex"]
+source_file="res://textures/wdcord1.jpg"
+dest_files=["res://.godot/imported/wdcord1.jpg-25406e3e8afafc4e835bbc7f6095c8ea.ctex"]
 
 [params]
 

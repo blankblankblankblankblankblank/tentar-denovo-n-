@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bm815gj741ycq"
-path="res://.godot/imported/greybrick.png-17234da3465dfdced8ba00e84d337340.ctex"
+path="res://.godot/imported/greybrick.png-f848e753e95c8a605cfbb20b0021172d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/greybrick.png"
-dest_files=["res://.godot/imported/greybrick.png-17234da3465dfdced8ba00e84d337340.ctex"]
+source_file="res://textures/greybrick.png"
+dest_files=["res://.godot/imported/greybrick.png-f848e753e95c8a605cfbb20b0021172d.ctex"]
 
 [params]
 

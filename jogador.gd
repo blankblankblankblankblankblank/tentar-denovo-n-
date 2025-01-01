@@ -1,13 +1,14 @@
 extends CharacterBody3D
 #vars
 const JUMP_VELOCITY = 12.0
-var BASVEL = 18.0
+var BASVEL := 18.0
 const MAXVEL = 22.0
 const MINVEL = 18.0
 var accel := 24.0
 var friction := 5.0
-var is_dead = false
-var gravity = 56
+var is_dead := false
+var gravity := 56
+var fov:int
 
 @export_category('mp elements')
 @export var data := [Color(1,1,1),'Nombre']
@@ -64,7 +65,6 @@ func position_rpc(pos:Vector3,path:NodePath):
 		hpbar.value = hp
 
 func _physics_process(delta):
-	rotate_rpc.rpc(cam.rotation,rotation,get_path())
 	var direction = transform.basis * (Vector3(input.direction.x, 0, input.direction.y)).normalized()
 	if direction:
 		Velocity = _accelerate(accel,direction,delta)
@@ -97,7 +97,6 @@ func _friction(delta: float) -> Vector3:
 
 @rpc ("call_remote",'any_peer')
 func _on_hit(dmg:int):
-	$MeshInstance3D/Label3D.text = data[1]
 	if is_multiplayer_authority():
 		hp -= dmg
 		print(str(player)+': HP '+str(hp))
@@ -116,3 +115,7 @@ func hit_mark():
 	$Camera/Control/TextureRect2.visible = true
 	tween.tween_property($Camera/Control/TextureRect2,'modulate',Color(1,0,0,0),0.32)
 	tween.tween_property($Camera/Control/TextureRect2,'visible',false,0)
+
+func _on_rotation_timer_timeout() -> void:
+	rotate_rpc.rpc(cam.rotation,rotation,get_path())
+	position_rpc(global_position,get_path())

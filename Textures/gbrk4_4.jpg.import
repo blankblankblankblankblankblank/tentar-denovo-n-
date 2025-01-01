@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cb1c2p21u0nro"
-path="res://.godot/imported/gbrk4_4.jpg-2b23d9b2cf84cd2690d10397367027f9.ctex"
+path="res://.godot/imported/gbrk4_4.jpg-291d894608456fe52d1135911b43bc2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/gbrk4_4.jpg"
-dest_files=["res://.godot/imported/gbrk4_4.jpg-2b23d9b2cf84cd2690d10397367027f9.ctex"]
+source_file="res://textures/gbrk4_4.jpg"
+dest_files=["res://.godot/imported/gbrk4_4.jpg-291d894608456fe52d1135911b43bc2c.ctex"]
 
 [params]
 

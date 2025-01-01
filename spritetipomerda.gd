@@ -1,5 +1,7 @@
 @tool
 extends Sprite3D
+@export var rotation_scale:Vector3
+@export var rotation_rate:float
 
 func _process(delta: float) -> void:
-	rotation.y += 1.2*delta
+	rotation += rotation_rate * delta * rotation_scale

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds3ml3hny0egy"
-path.s3tc="res://.godot/imported/fstna_2.jpg-adf33b8f8c75be9510cfe27398e77ca0.s3tc.ctex"
+path.s3tc="res://.godot/imported/fstna_2.jpg-2af3124b6c00da45f6e9916a5f10ee35.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/fstna_2.jpg"
-dest_files=["res://.godot/imported/fstna_2.jpg-adf33b8f8c75be9510cfe27398e77ca0.s3tc.ctex"]
+source_file="res://textures/fstna_2.jpg"
+dest_files=["res://.godot/imported/fstna_2.jpg-2af3124b6c00da45f6e9916a5f10ee35.s3tc.ctex"]
 
 [params]
 

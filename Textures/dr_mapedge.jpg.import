@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://coddpodfc3gmj"
-path="res://.godot/imported/dr_mapedge.jpg-38b72da7465aeb765a78b0b416b353a8.ctex"
+path="res://.godot/imported/dr_mapedge.jpg-eff543ca8c985bb6b262d968445b83d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/dr_mapedge.jpg"
-dest_files=["res://.godot/imported/dr_mapedge.jpg-38b72da7465aeb765a78b0b416b353a8.ctex"]
+source_file="res://textures/dr_mapedge.jpg"
+dest_files=["res://.godot/imported/dr_mapedge.jpg-eff543ca8c985bb6b262d968445b83d7.ctex"]
 
 [params]
 

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dbngo48t84dgn"]
+
+[ext_resource type="Texture2D" uid="uid://crvcv80yausvi" path="res://textures/bluewindow.jpg" id="1_266ds"]
+
+[resource]
+albedo_texture = ExtResource("1_266ds")
+metallic_specular = 0.0
+texture_filter = 2

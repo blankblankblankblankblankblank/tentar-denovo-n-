@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k4hy4fewrcxy"
-path.s3tc="res://.godot/imported/mosaicwindow.png-124ad865e85ef74c0ba5a01074ad825d.s3tc.ctex"
+path.s3tc="res://.godot/imported/mosaicwindow.png-4dace938ec4af04833156ed77f030e46.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/mosaicwindow.png"
-dest_files=["res://.godot/imported/mosaicwindow.png-124ad865e85ef74c0ba5a01074ad825d.s3tc.ctex"]
+source_file="res://textures/mosaicwindow.png"
+dest_files=["res://.godot/imported/mosaicwindow.png-4dace938ec4af04833156ed77f030e46.s3tc.ctex"]
 
 [params]
 

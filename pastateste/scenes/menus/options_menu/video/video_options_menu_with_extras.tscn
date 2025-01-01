@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bofh0ihp45jwb"]
+[gd_scene load_steps=6 format=3 uid="uid://bofh0ihp45jwb"]
 
 [ext_resource type="PackedScene" uid="uid://bxr23dxqcxwy7" path="res://pastateste/scenes/menus/options_menu/video/video_options_menu.tscn" id="1_5iqtg"]
 [ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/option_control/list_option_control.tscn" id="2_jv3cd"]
+[ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="2_ueb3e"]
+[ext_resource type="Script" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/option_control/list_option_control.gd" id="3_hge1c"]
 [ext_resource type="Script" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/option_control/option_control.gd" id="3_w0564"]
 
 [node name="Video" instance=ExtResource("1_5iqtg")]
 
-[node name="AntiAliasingControl" parent="VBoxContainer" index="2" instance=ExtResource("2_jv3cd")]
+[node name="VSync" parent="VBoxContainer" index="1" instance=ExtResource("2_ueb3e")]
+layout_mode = 2
+lock_config_names = true
+option_name = "V-Sync"
+option_section = 3
+key = "Vsync"
+section = "VideoSettings"
+
+[node name="AntiAliasingControl" parent="VBoxContainer" index="3" instance=ExtResource("2_jv3cd")]
 layout_mode = 2
 lock_titles = true
 option_values = [0, 1, 2, 3]
@@ -18,7 +28,41 @@ section = "VideoSettings"
 property_type = 2
 default_value = 0
 
-[node name="FieldOfView" type="HBoxContainer" parent="VBoxContainer" index="3"]
+[node name="ShadingMode" type="HBoxContainer" parent="VBoxContainer" index="4"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+script = ExtResource("3_hge1c")
+lock_titles = true
+option_values = [0, 1, 2]
+option_titles = Array[String](["Normal Shading", "Unshaded", "Ultra (SDFGI)"])
+lock_config_names = true
+option_name = "Shading Mode"
+option_section = 3
+key = "ShadingMode"
+section = "VideoSettings"
+default_value = null
+
+[node name="OptionLabel" type="RichTextLabel" parent="VBoxContainer/ShadingMode" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shading Mode :"
+fit_content = true
+scroll_active = false
+language = "en"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/ShadingMode" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Normal Shading"
+popup/item_1/text = "Unshaded"
+popup/item_1/id = 1
+popup/item_2/text = "Ultra (SDFGI)"
+popup/item_2/id = 2
+
+[node name="FieldOfView" type="HBoxContainer" parent="VBoxContainer" index="5"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 script = ExtResource("3_w0564")
@@ -50,7 +94,7 @@ ticks_on_borders = true
 layout_mode = 2
 text = "120"
 
-[node name="OptionControl" type="HBoxContainer" parent="VBoxContainer" index="4"]
+[node name="HandPosition" type="HBoxContainer" parent="VBoxContainer" index="6"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 script = ExtResource("3_w0564")
@@ -61,23 +105,25 @@ section = "VideoSettings"
 property_type = 3
 default_value = 1.0
 
-[node name="OptionLabel" type="RichTextLabel" parent="VBoxContainer/OptionControl" index="0"]
+[node name="OptionLabel" type="RichTextLabel" parent="VBoxContainer/HandPosition" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Hand Position :"
 fit_content = true
 scroll_active = false
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/OptionControl" index="1"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HandPosition" index="1"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_vertical = 4
-min_value = -1.0
-max_value = 1.0
+min_value = -1.8
+max_value = 1.8
 step = 0.05
-tick_count = 12
+tick_count = 18
 ticks_on_borders = true
 
-[node name="Label" type="Label" parent="VBoxContainer/OptionControl" index="2"]
+[node name="Label" type="Label" parent="VBoxContainer/HandPosition" index="2"]
 layout_mode = 2
 text = "0"
+
+[connection signal="setting_changed" from="VBoxContainer/VSync" to="." method="_on_v_sync_setting_changed"]

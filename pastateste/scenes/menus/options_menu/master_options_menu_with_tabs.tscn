@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dirkjy13p2p41"]
+[gd_scene load_steps=7 format=3 uid="uid://dirkjy13p2p41"]
 
 [ext_resource type="PackedScene" uid="uid://ys1poyl33nlm" path="res://pastateste/scenes/menus/options_menu/master_options_menu.tscn" id="1_1c612"]
 [ext_resource type="PackedScene" uid="uid://m54041ux3fu0" path="res://pastateste/scenes/menus/options_menu/input/input_options_menu_with_mouse_sensitivity.tscn" id="2_fcope"]
 [ext_resource type="PackedScene" uid="uid://bstnvpsdpuuk4" path="res://pastateste/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="3_tvi2d"]
 [ext_resource type="PackedScene" uid="uid://bofh0ihp45jwb" path="res://pastateste/scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="4_0xmj8"]
+[ext_resource type="PackedScene" uid="uid://dj8dscksoxty1" path="res://pastateste/scenes/menus/options_menu/game_options_menu.tscn" id="5_fwwgl"]
+[ext_resource type="Script" path="res://buttontipomerda.gd" id="6_m6bkn"]
 
 [node name="MasterOptionsMenu" instance=ExtResource("1_1c612")]
 top_level = true
@@ -16,10 +18,12 @@ anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-current_tab = 0
+current_tab = 3
 all_tabs_in_front = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Controls" parent="TabContainer" index="1" instance=ExtResource("2_fcope")]
+visible = false
 layout_mode = 2
 mouse_filter = 0
 metadata/_tab_index = 0
@@ -36,17 +40,20 @@ layout_mode = 2
 mouse_filter = 0
 metadata/_tab_index = 2
 
+[node name="Game" parent="TabContainer" index="4" instance=ExtResource("5_fwwgl")]
+layout_mode = 2
+
 [node name="Button" type="Button" parent="." index="1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 12.672
-offset_top = -48.2001
-offset_right = 76.672
-offset_bottom = -16.2001
+anchor_left = 0.011
+anchor_top = 0.925617
+anchor_right = 0.0665556
+anchor_bottom = 0.975
 grow_vertical = 0
 pivot_offset = Vector2(-12, 48)
 text = "QUIT"
+script = ExtResource("6_m6bkn")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

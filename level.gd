@@ -5,6 +5,7 @@ const SPAWN_RANDOM := 5.0
 # raio = 0 fireball = 1 shotgun ice = 2
 const shots = [preload('res://raio.tscn'),preload('res://fireball.tscn'),preload('res://shotsfired.tscn')]
 
+const meat = preload('res://Meat.tscn')
 const Death = preload('res://Death.tscn')
 const explo = preload('res://explosion.tscn')
 @export var spawn_positions := []
@@ -35,8 +36,14 @@ func die(path):
 	var dead = Death.instantiate()
 	dead.position = get_node(path).position
 	add_child(dead)
+	for i in 3:
+		var inst = meat.instantiate()
+		inst.apply_central_impulse(Vector3(randf_range(-1,1),randf_range(0,1),randf_range(-1,1)))
+		add_child(inst)
+		inst.position = get_node(path).position
 	get_node(path).position = get_node(spawn_positions.pick_random()).global_position
 	get_node(path).hp = 200
+
 
 func _exit_tree():
 	if not multiplayer.is_server(): 

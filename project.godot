@@ -21,17 +21,22 @@ SyncManager="*res://addons/godot-rollback-netcode/SyncManager.gd"
 AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 Options="*res://pastateste/scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [dotnet]
 
 project/assembly_name="tentar denovo né"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/godot-rollback-netcode/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg")
+enabled=PackedStringArray("res://addons/bsp_importer/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/godot-rollback-netcode/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg", "res://addons/tbloader/plugin.cfg")
 
 [global_group]
 
 jogador="claramente jogadores né caralho"
+Lights="Luzes"
 
 [input]
 
@@ -95,6 +100,12 @@ TAB={
 
 locale/translations=PackedStringArray("res://addons/maaacks_options_menus/base/translations/menus_translations.en.translation", "res://addons/maaacks_options_menus/base/translations/menus_translations.fr.translation")
 
+[layer_names]
+
+3d_render/layer_1="Default"
+3d_render/layer_2="Invisible"
+3d_render/layer_3="Lights"
+
 [maaacks_options_menus]
 
 disable_plugin_dialogues=true
@@ -106,6 +117,8 @@ copy_path="res://pastateste"
 
 [rendering]
 
+rendering_device/staging_buffer/texture_upload_region_size_px=128
 textures/canvas_textures/default_texture_filter=0
-occlusion_culling/occlusion_rays_per_thread=128
+textures/decals/filter=0
+occlusion_culling/occlusion_rays_per_thread=64
 occlusion_culling/use_occlusion_culling=true

@@ -91,7 +91,7 @@ noise = SubResource("FastNoiseLite_bpeqt")
 [resource]
 render_priority = 0
 shader = SubResource("Shader_y12m8")
-shader_parameter/albedo = Color(3, 3, 3, 1)
+shader_parameter/albedo = Color(5, 3, 3, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = null

@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://ch2mr18aj5gfl"]
+
+[ext_resource type="Sky" uid="uid://dcs5d8xaspr0o" path="res://rainysky.tres" id="1_k3xfq"]
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.45
+sky = ExtResource("1_k3xfq")
+ambient_light_source = 3
+ambient_light_color = Color(0.709804, 1, 1, 1)
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.1
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.32

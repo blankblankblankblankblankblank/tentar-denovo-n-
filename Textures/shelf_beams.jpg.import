@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5ak1lyfqv1hv"
-path="res://.godot/imported/shelf_beams.jpg-134100b61cd52e69a0ebb56844df60d8.ctex"
+path="res://.godot/imported/shelf_beams.jpg-0333ad3eab6bbe2148228363a64c5c52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/shelf_beams.jpg"
-dest_files=["res://.godot/imported/shelf_beams.jpg-134100b61cd52e69a0ebb56844df60d8.ctex"]
+source_file="res://textures/shelf_beams.jpg"
+dest_files=["res://.godot/imported/shelf_beams.jpg-0333ad3eab6bbe2148228363a64c5c52.ctex"]
 
 [params]
 

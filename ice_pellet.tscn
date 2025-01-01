@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ice_pellet.gd" id="1_d84pu"]
 [ext_resource type="ArrayMesh" uid="uid://0vted0cfpvcq" path="res://crystal_dagger.tres" id="1_s6vlb"]
-[ext_resource type="Texture2D" uid="uid://7ett1a6ghp8t" path="res://Textures/ice_noise.tres" id="2_edk4s"]
+[ext_resource type="Texture2D" uid="uid://7ett1a6ghp8t" path="res://textures/ice_noise.tres" id="2_edk4s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw0cg"]
 albedo_texture = ExtResource("2_edk4s")
