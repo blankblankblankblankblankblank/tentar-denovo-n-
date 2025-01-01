@@ -47,19 +47,18 @@ func start_game():
 	# Hide the UI and unpause to start the game.
 	$UI.hide()
 	get_tree().paused = false
-	#if multiplayer.is_server():
-	change_level.call_deferred(load("res://level1.tscn"))
+	if multiplayer.is_server():
+		change_level.call_deferred(load("res://level"+str($UI/LevelSelect.selected+1)+".tscn"))
 
 
 # Call this function deferred and only on the main authority (server).
 func change_level(scene: PackedScene):
 	# Remove old level if any.
-	var level = $Level
-	for c in level.get_children():
-		level.remove_child(c)
+	for c in $Level.get_children():
+		$Level.remove_child(c)
 		c.queue_free()
 	# Add new level.
-	level.add_child(scene.instantiate(),true)
+	$Level.add_child(scene.instantiate(),true)
 
 func disconnect_sv():
 	peer.close_connection()
@@ -70,4 +69,4 @@ func _input(event):
 	if not multiplayer.is_server():
 		return
 	if event.is_action("ui_home") and Input.is_action_just_pressed("ui_home"):
-		change_level.call_deferred(load("res://level1.tscn"))
+		change_level.call_deferred(load("res://level"+str($UI/LevelSelect.selected+1)+".tscn"))

@@ -9,14 +9,14 @@ seed = 1240
 fractal_lacunarity = 2.79
 domain_warp_type = 2
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hxmdn"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_opdqc"]
 generate_mipmaps = false
 seamless = true
 color_ramp = SubResource("Gradient_dp058")
 noise = SubResource("FastNoiseLite_i13cj")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0wgjl"]
-panorama = SubResource("NoiseTexture2D_hxmdn")
+panorama = SubResource("NoiseTexture2D_opdqc")
 filter = false
 
 [resource]

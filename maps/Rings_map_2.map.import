@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://cgewf87ipgos2"
+path="res://.godot/imported/Rings_map_2.map-e348e177f1c46f317d381a071fa23861.tres"
+
+[deps]
+
+source_file="res://maps/Rings_map_2.map"
+dest_files=["res://.godot/imported/Rings_map_2.map-e348e177f1c46f317d381a071fa23861.tres"]
+
+[params]
+

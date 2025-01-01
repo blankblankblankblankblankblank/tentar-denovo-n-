@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://bg88qavbyqrk2"]
+
+[ext_resource type="Script" path="res://jump_pad.gd" id="1_b4lnw"]
+[ext_resource type="Texture2D" uid="uid://d0k6l4rvi6828" path="res://textures/ShotOne.png" id="2_vnpbg"]
+[ext_resource type="Texture2D" uid="uid://dv460v3oaafwm" path="res://textures/yith_blu1.jpg" id="3_ggibg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rjmcr"]
+height = 5.0
+radius = 8.0
+
+[sub_resource type="Curve" id="Curve_rlmsk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.766169, 0.868132), -0.506181, -0.506181, 0, 0, Vector2(1, 0), -5.15384, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wjkju"]
+curve = SubResource("Curve_rlmsk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1f3wc"]
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.5
+initial_velocity_max = 5.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_wjkju")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhe6y"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_vnpbg")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_sth30"]
+material = SubResource("StandardMaterial3D_uhe6y")
+size = Vector2(22, 22)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j35cr"]
+size = Vector3(22, 1, 26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3lnr"]
+albedo_texture = ExtResource("3_ggibg")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dhqg"]
+material = SubResource("StandardMaterial3D_s3lnr")
+size = Vector3(22, 1, 25)
+
+[node name="JumpPad" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -36.6, 1)
+script = ExtResource("1_b4lnw")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+gravity = 320.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_rjmcr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+speed_scale = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1f3wc")
+draw_pass_1 = SubResource("QuadMesh_sth30")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.795006, 0)
+layers = 4
+light_color = Color(0, 0.96591, 1, 1)
+light_energy = 3.0
+light_specular = 0.0
+omni_range = 15.0
+omni_attenuation = -0.445
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_j35cr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_2dhqg")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

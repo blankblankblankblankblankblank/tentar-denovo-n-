@@ -18,7 +18,7 @@ anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-current_tab = 3
+current_tab = 2
 all_tabs_in_front = true
 metadata/_edit_use_anchors_ = true
 
@@ -35,12 +35,12 @@ mouse_filter = 0
 metadata/_tab_index = 1
 
 [node name="Video" parent="TabContainer" index="3" instance=ExtResource("4_0xmj8")]
-visible = false
 layout_mode = 2
 mouse_filter = 0
 metadata/_tab_index = 2
 
 [node name="Game" parent="TabContainer" index="4" instance=ExtResource("5_fwwgl")]
+visible = false
 layout_mode = 2
 
 [node name="Button" type="Button" parent="." index="1"]

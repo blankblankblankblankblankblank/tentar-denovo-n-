@@ -1,0 +1,25 @@
+[gd_resource type="Sky" load_steps=5 format=3 uid="uid://cln3ltqscp4ei"]
+
+[sub_resource type="Gradient" id="Gradient_mjds3"]
+offsets = PackedFloat32Array(0, 0.767956, 1)
+colors = PackedColorArray(1, 0.924, 0.76, 1, 0.25692, 0, 0.363281, 1, 0.0590349, 0, 0.0703125, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ate4g"]
+noise_type = 2
+frequency = 0.014
+fractal_octaves = 6
+fractal_gain = 0.55
+cellular_distance_function = 2
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bjotm"]
+seamless = true
+color_ramp = SubResource("Gradient_mjds3")
+noise = SubResource("FastNoiseLite_ate4g")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jt77s"]
+panorama = SubResource("NoiseTexture2D_bjotm")
+filter = false
+
+[resource]
+sky_material = SubResource("PanoramaSkyMaterial_jt77s")

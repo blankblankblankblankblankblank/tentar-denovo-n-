@@ -8,6 +8,7 @@ const shots = [preload('res://raio.tscn'),preload('res://fireball.tscn'),preload
 const meat = preload('res://Meat.tscn')
 const Death = preload('res://Death.tscn')
 const explo = preload('res://explosion.tscn')
+@export var level := 1
 @export var spawn_positions := []
 @onready var worldsync = get_node('WorldSync')
 

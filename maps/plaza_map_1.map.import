@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://dyuu3ky7s6t42"
+path="res://.godot/imported/plaza_map_1.map-7eb80d035aa2ca13a37e093f503b42c8.tres"
+
+[deps]
+
+source_file="res://maps/plaza_map_1.map"
+dest_files=["res://.godot/imported/plaza_map_1.map-7eb80d035aa2ca13a37e093f503b42c8.tres"]
+
+[params]
+

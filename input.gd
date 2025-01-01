@@ -58,7 +58,7 @@ func _config_altered():
 	%Camera.get_node('HandMesh/Sprite3D').visible = Config.get_config('GameSettings','ShowWeaponSwitch',true)
 	%Camera.get_node('HandMesh/Sprite3D2').visible = Config.get_config('GameSettings','ShowWeaponSwitch',true)
 	if Config.get_config('VideoSettings','ShadingMode',0) == 2:
-		%Camera.environment = load('res://SDFGI_enviroment_1.tres')
+		%Camera.environment = load('res://SDFGI_enviroment_'+str(get_parent().get_parent().level)+'.tres')
 	else:
 		%Camera.environment = null
 	if %Camera/HandMesh.position.x < 0:

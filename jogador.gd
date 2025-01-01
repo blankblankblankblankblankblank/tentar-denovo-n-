@@ -110,11 +110,11 @@ func _on_hit(dmg:int):
 	$GPUParticles3D.emitting = true
 
 func hit_mark():
-	$Camera/Control/TextureRect2.modulate.a = 1
+	$Camera/Control/TextureRect/TextureRect2.modulate.a = 1
 	var tween = create_tween()
-	$Camera/Control/TextureRect2.visible = true
-	tween.tween_property($Camera/Control/TextureRect2,'modulate',Color(1,0,0,0),0.32)
-	tween.tween_property($Camera/Control/TextureRect2,'visible',false,0)
+	$Camera/Control/TextureRect/TextureRect2.visible = true
+	tween.tween_property($Camera/Control/TextureRect/TextureRect2,'modulate',Color(1,0,0,0),0.32)
+	tween.tween_property($Camera/Control/TextureRect/TextureRect2,'visible',false,0)
 
 func _on_rotation_timer_timeout() -> void:
 	rotate_rpc.rpc(cam.rotation,rotation,get_path())

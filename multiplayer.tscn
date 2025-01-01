@@ -9,7 +9,7 @@ script = ExtResource("1_tn1j5")
 [node name="Level" type="Node" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://level1.tscn")
+_spawnable_scenes = PackedStringArray("res://level1.tscn", "res://level2.tscn")
 spawn_path = NodePath("../Level")
 
 [node name="UI" type="Control" parent="."]
@@ -23,70 +23,58 @@ grow_vertical = 2
 
 [node name="Host" type="Button" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -40.0
-offset_right = 117.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_left = 0.398438
+anchor_top = 0.438272
+anchor_right = 0.601563
+anchor_bottom = 0.561728
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(117, 40)
 text = "Host Game"
 script = ExtResource("2_72g6s")
+metadata/_edit_use_anchors_ = true
 
 [node name="Join" type="Button" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = 40.0
-offset_right = 117.0
-offset_bottom = 120.0
+anchors_preset = -1
+anchor_left = 0.398438
+anchor_top = 0.561728
+anchor_right = 0.601563
+anchor_bottom = 0.685185
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(117, 40)
 text = "Join Game"
 script = ExtResource("2_72g6s")
+metadata/_edit_use_anchors_ = true
 
 [node name="LineEdit" type="LineEdit" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -125.0
-offset_right = 117.0
-offset_bottom = -40.0
+anchors_preset = -1
+anchor_left = 0.398438
+anchor_top = 0.307099
+anchor_right = 0.601563
+anchor_bottom = 0.438272
 grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "Ip addres"
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="nome" type="LineEdit" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 300.0
-offset_top = -125.0
-offset_right = 510.0
-offset_bottom = -85.0
+anchors_preset = -1
+anchor_left = 0.760417
+anchor_top = 0.307099
+anchor_right = 0.942708
+anchor_bottom = 0.368827
 grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "nickname"
 alignment = 1
 max_length = 22
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="UI"]
 visible = false
@@ -97,6 +85,21 @@ offset_right = 1086.0
 offset_bottom = 279.0
 color = Color(1, 1, 1, 1)
 edit_alpha = false
+
+[node name="LevelSelect" type="OptionButton" parent="UI"]
+layout_mode = 0
+anchor_left = 0.110243
+anchor_top = 0.307099
+anchor_right = 0.304688
+anchor_bottom = 0.354938
+offset_bottom = -11.0
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "Plaza"
+popup/item_1/text = "Ringed Grounds"
+popup/item_1/id = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="UI/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Join" to="." method="_on_connect_pressed"]

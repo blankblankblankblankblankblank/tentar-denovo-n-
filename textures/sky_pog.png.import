@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8otbws4dn6ke"
-path.s3tc="res://.godot/imported/yith_gry1.jpg-80123ba6e2abf7e4e6d52075fa91b478.s3tc.ctex"
+uid="uid://ck6babrkkl5ho"
+path.s3tc="res://.godot/imported/sky_pog.png-191b4195948a06e6cd3689e7efb172df.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/yith_gry1.jpg"
-dest_files=["res://.godot/imported/yith_gry1.jpg-80123ba6e2abf7e4e6d52075fa91b478.s3tc.ctex"]
+source_file="res://textures/sky_pog.png"
+dest_files=["res://.godot/imported/sky_pog.png-191b4195948a06e6cd3689e7efb172df.s3tc.ctex"]
 
 [params]
 
